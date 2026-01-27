@@ -17,7 +17,6 @@ public class SubjectListLoader : MonoBehaviour
     {
         ClearContent();
 
-        // Sicherheit
         if (DataManager.Instance == null ||
             DataManager.Instance.appData == null ||
             DataManager.Instance.appData.subjects == null)
@@ -44,7 +43,7 @@ public class SubjectListLoader : MonoBehaviour
         button.onClick.AddListener(() =>
         {
             Debug.Log("Subject clicked: " + subjectName);
-            // später: DetailPanel öffnen
+            // später passiert hier was
         });
     }
 

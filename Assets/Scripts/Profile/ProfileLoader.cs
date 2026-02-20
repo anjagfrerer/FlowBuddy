@@ -20,7 +20,7 @@ public class ProfileLoader : MonoBehaviour
         "Sound Settings"
     };
 
-    // ⚡ Öffentliche Methode, die beim Klick aufgerufen wird
+    // beim Klick aufgerufen
     public void LoadProfiles()
     {
         if (content == null || profilePrefab == null)

@@ -379,10 +379,8 @@
           },
           {
             "name": "Renderer",
-            "scenes": [
-              "Assets/Scenes/FirstPage.unity"
-            ],
-            "dependencyType": 0,
+            "scenes": [],
+            "dependencyType": 1,
             "icon": null
           },
           {
@@ -445,9 +443,7 @@
           },
           {
             "name": "SpriteRenderer",
-            "scenes": [
-              "Assets/Scenes/FirstPage.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },

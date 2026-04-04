@@ -505,6 +505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9c5ea7cb39fb54eb61f2365e81b6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TapToChange
+  sceneDatabase: {fileID: 11400000, guid: e856a793d20bdd926a7fd4c89aa0d4d1, type: 2}
+  nextScene: 0
 --- !u!4 &890414976
 Transform:
   m_ObjectHideFlags: 0

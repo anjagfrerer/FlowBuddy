@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FirstPage.unity
+    path: Assets/Scenes/1 TitlePage.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/NewUserPage.unity
+    path: Assets/Scenes/2 First StartUp/2.1 InsertName.unity
     guid: f41c84cc36e98cf4aaeb52745301dd3f
   - enabled: 1
-    path: Assets/Scenes/AddSubjectPage.unity
+    path: Assets/Scenes/2 First StartUp/2.2 AddSubjectPage.unity
     guid: a7fdf818560b93345a371c589fd547cf
   - enabled: 1
-    path: Assets/Scenes/MainPage.unity
+    path: Assets/Scenes/3 MainPage.unity
     guid: f80c55ed07e25fb48870b968eacad67e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

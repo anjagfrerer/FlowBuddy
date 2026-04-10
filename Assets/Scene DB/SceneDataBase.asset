@@ -16,10 +16,12 @@ MonoBehaviour:
   - id: 0
     sceneName: 2.1 InsertName
   - id: 1
-    sceneName: 6 Settings
-  - id: 2
+    sceneName: 2.2 AddSubjectPage
+  - id: 3
     sceneName: 3 MainPage
   - id: 4
-    sceneName: 5 Store
-  - id: 3
     sceneName: 4 Subjects
+  - id: 2
+    sceneName: 6 Settings
+  - id: 5
+    sceneName: 5 Store

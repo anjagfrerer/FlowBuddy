@@ -1693,8 +1693,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1093027371}
-        m_TargetAssemblyTypeName: SceneChanger2, Assembly-CSharp
-        m_MethodName: LoadNextScene
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: loadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1894,9 +1894,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093027370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6509d4f6fc5830641a00305457e59a7f, type: 3}
+  m_Script: {fileID: 11500000, guid: bac1c9ae97c551743a312310a7e09b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneChanger2
+  nextScene: 3
+  Database: {fileID: 11400000, guid: e856a793d20bdd926a7fd4c89aa0d4d1, type: 2}
 --- !u!4 &1093027372
 Transform:
   m_ObjectHideFlags: 0

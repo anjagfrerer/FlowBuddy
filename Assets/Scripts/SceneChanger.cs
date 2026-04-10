@@ -1,11 +1,19 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class SceneChanger
+public class SceneChanger : MonoBehaviour
 {
-    public static SceneDatabase Database;
-    public static void Load(SceneID id)
+    public SceneID nextScene;
+    public SceneDatabase Database;
+    public void Load(SceneID id)
     {
         string sceneName = Database.GetSceneName(id);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void loadNextScene()
+    {
+        string sceneName = Database.GetSceneName(nextScene);
         SceneManager.LoadScene(sceneName);
     }
 }

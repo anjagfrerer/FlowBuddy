@@ -2,15 +2,7 @@ using UnityEngine;
 [System.Serializable]
 public class Subject
 {
-    private int id;
+    public int id{get;set;}
     public string name;
 
-    public int GetId()
-    {
-        return id;
-    }
-    public void SetId(int id)
-    {
-
-    }
 }

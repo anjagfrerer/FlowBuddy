@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ public class DataManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning($"An instance of {gameObject} already exists! Deleting...");
             Destroy(gameObject);
             return;
         }
@@ -21,12 +21,14 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         filePath = Path.Combine(Application.persistentDataPath, "flowbuddy_data.json");
+        Debug.Log($"Appdata will be stored in: {filePath}");
         LoadData();
     }
 
     public void SaveData()
     {
         string json = JsonUtility.ToJson(appData, true);
+        Debug.Log(json);
         File.WriteAllText(filePath, json);
     }
 

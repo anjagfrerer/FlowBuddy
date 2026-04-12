@@ -1,26 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class TapToChange : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
+    public SceneChanger sceneChanger;
     void Update()
     {
-        // Prüft, ob irgendein Touch auf dem Bildschirm ist
+        // Prï¿½ft, ob irgendein Touch auf dem Bildschirm ist
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
         {
-            SceneManager.LoadScene(1);
+            sceneChanger.loadNextScene();
         }
 
-        // Mausklick für Editor/PC
+        // Mausklick fï¿½r Editor/PC
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            SceneManager.LoadScene(1);
+            sceneChanger.loadNextScene();
         }
     }
 }

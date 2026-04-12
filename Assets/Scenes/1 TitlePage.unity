@@ -486,6 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 890414976}
   - component: {fileID: 890414975}
+  - component: {fileID: 890414977}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -505,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9c5ea7cb39fb54eb61f2365e81b6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TapToChange
+  sceneChanger: {fileID: 890414977}
 --- !u!4 &890414976
 Transform:
   m_ObjectHideFlags: 0
@@ -520,6 +522,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890414977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890414974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac1c9ae97c551743a312310a7e09b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
+  nextScene: 0
+  Database: {fileID: 11400000, guid: e856a793d20bdd926a7fd4c89aa0d4d1, type: 2}
 --- !u!1 &1233304192
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

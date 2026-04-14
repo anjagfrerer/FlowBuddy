@@ -63,4 +63,27 @@ public class DataManager : MonoBehaviour
             SaveData();
         }
     }
+
+    public void EditSubject(string oldName, string newName)
+    {
+        Subject subjectToEdit = appData.subjects.Find(s => s.name == oldName);
+
+        if (subjectToEdit != null)
+        {
+            if (appData.subjects.Exists(s => s.name == newName && s.name != oldName))
+            {
+                Debug.LogWarning($"Edit failed: Subject with name '{newName}' already exists.");
+                return;
+            }
+
+            subjectToEdit.name = newName;
+
+            SaveData();
+            Debug.Log($"Subject '{oldName}' was renamed to '{newName}'");
+        }
+        else
+        {
+            Debug.LogError($"Edit failed: Subject '{oldName}' not found.");
+        }
+    }
 }

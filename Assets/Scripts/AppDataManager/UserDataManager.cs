@@ -9,10 +9,10 @@ public class UserDataManager : MonoBehaviour
         user.username = name;
         UpdateAppdata();
     }
-
     void UpdateAppdata()
     {
         DataManager.Instance.appData.user = user;
         DataManager.Instance.SaveData();
     }
+
 }

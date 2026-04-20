@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class WelcomeTextScript : MonoBehaviour
+public class UserTextScript : MonoBehaviour
 {
+    public string contentText;
     void Start()
     {
         TMP_Text text = GetComponent<TMP_Text>();
@@ -15,10 +16,10 @@ public class WelcomeTextScript : MonoBehaviour
         }
 
         if(username != null)
-            text.text = $"Hello, {username}!";
+            text.text = contentText.Replace("{User}",username);
         else
         {
-            text.text = $"Hello, new User !";
+            gameObject.SetActive(false);
             Debug.LogWarning("User is undefined!");
         }
     }

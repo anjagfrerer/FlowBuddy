@@ -7,6 +7,7 @@ public class SubjectListLoader : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Transform content;
     [SerializeField] private GameObject subjectPrefab;
+    [SerializeField] private PanelController panelController;
 
     private void OnEnable()
     {
@@ -44,6 +45,7 @@ public class SubjectListLoader : MonoBehaviour
         {
             Debug.Log("Subject clicked: " + subjectName);
             // später passiert hier was
+            panelController.ShowPanel("List");
         });
     }
 

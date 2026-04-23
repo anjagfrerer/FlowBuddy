@@ -327,7 +327,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_text
-      value: Tasks
+      value: Subject
       objectReference: {fileID: 0}
     - target: {fileID: 7666349752566059211, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: nextScene
@@ -335,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7848220274735236099, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_Name
-      value: Tasks
+      value: Subjects
       objectReference: {fileID: 0}
     - target: {fileID: 8650061931938968249, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_Pivot.x

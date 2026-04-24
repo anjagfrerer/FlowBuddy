@@ -5,5 +5,6 @@ public enum SceneID
     Settings,
     MainPage,
     SubjectPage,
-    ShopPage
+    ShopPage,
+    TaskPage
 }

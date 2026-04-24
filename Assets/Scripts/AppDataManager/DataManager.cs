@@ -8,6 +8,7 @@ public class DataManager : MonoBehaviour
 
     private string filePath;
     public AppData appData;
+    public string selectedSubjectName; //speichert welches subject geklickt wurde
 
     private void Awake()
     {

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Task
 {
     public string id;
+    public string subjectId;
     public string title;
     public string description;
     public string dueDateString;
-    public string subjectName;
 }

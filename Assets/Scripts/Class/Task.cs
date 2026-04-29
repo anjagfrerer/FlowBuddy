@@ -6,7 +6,7 @@ public class Task
 {
     public string id;
     public string subjectId;
-    public string title;
+    public string name;
     public string description;
     public string dueDateString;
 }

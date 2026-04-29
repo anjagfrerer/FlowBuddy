@@ -52,6 +52,7 @@ public class SubjectListLoader : MonoBehaviour
         {
             Debug.Log("Subject clicked: " + subjectName);
             DataManager.Instance.selectedSubjectName = subjectName; // DataManager melden, welches Fach gewählt wurde
+            Debug.Log("Subject selected");
             if (sceneChanger != null)
             {
                 sceneChanger.Load(SceneID.TaskPage);

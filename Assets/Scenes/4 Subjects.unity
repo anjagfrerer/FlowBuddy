@@ -1077,6 +1077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29b914f9b0fa1c43a2ef4f86e229ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  content: {fileID: 0}
+  taskPrefab: {fileID: 0}
+  sceneChanger: {fileID: 0}
 --- !u!4 &413435600
 Transform:
   m_ObjectHideFlags: 0
@@ -2194,7 +2197,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 569261461}
   m_HandleRect: {fileID: 569261460}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6242,3 +6245,4 @@ SceneRoots:
   - {fileID: 6177644959014735330}
   - {fileID: 1673867863}
   - {fileID: 1322464844}
+  - {fileID: 413435600}

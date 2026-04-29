@@ -11,7 +11,6 @@ public class TaskDataManager : MonoBehaviour
     private void Awake()
     {
         tasks = DataManager.Instance.appData.tasks;
-        
     }
 
     // CRUD
@@ -25,12 +24,27 @@ public class TaskDataManager : MonoBehaviour
     // List
     public List<Task> ListTasks(string subjectId)
     {
+        Debug.Log("Getting task list");
         return tasks.FindAll(task => task.subjectId == subjectId);
     }
 
     // Read
     public Task ReadTask(string id)
     {
+        if (id == "")
+        {
+            Debug.Log("Empty string: No tasks to read");
+        } else if (id == null)
+        {
+            Debug.Log("Null: No tasks to read");
+        } else
+        {
+            Debug.Log("Reading task");
+        }
+        
+        Task task = tasks.Find(t => t.id == id);
+        Debug.Log(task.name);
+
         return tasks.Find(t => t.id == id);
     }
 
@@ -46,7 +60,7 @@ public class TaskDataManager : MonoBehaviour
             return;
         }
 
-        task.title = title;
+        task.name = name;
         task.description = description;
         task.dueDateString = dueDateString;
 

@@ -17,7 +17,10 @@ public class TaskListLoader : MonoBehaviour
         {
             sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
         }
+    }
 
+    private void Start()
+    {
         LoadTasks();
     }
 
@@ -33,8 +36,15 @@ public class TaskListLoader : MonoBehaviour
             return;
         }
 
+
         string selectedSubjectName = DataManager.Instance.selectedSubjectName;
+        Debug.Log("Selected subject name: " + selectedSubjectName);
         Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.name == selectedSubjectName);
+        Debug.Log("Found subject: " + (selectedSubject == null ? "NULL" : selectedSubject.id));
+
+        Debug.Log("Selected subject name: " + selectedSubjectName);
+        Debug.Log("Found subject: " + (selectedSubject == null ? "NULL" : selectedSubject.id));
+        Debug.Log("Task count: " + DataManager.Instance.appData.tasks.Count);
 
         foreach (var task in DataManager.Instance.appData.tasks)
         {

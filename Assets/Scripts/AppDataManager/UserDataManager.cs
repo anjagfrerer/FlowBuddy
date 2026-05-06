@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UserDataManager : MonoBehaviour
 {
-    public User user = new User();
+    private User user = new User();
 
     public void setUserName(string name)
     {

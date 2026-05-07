@@ -9,10 +9,18 @@ public class UserDataManager : MonoBehaviour
         user.username = name;
         UpdateAppdata();
     }
+
+    public void SetEnergyLevel(int level)
+    {
+        user.energyLimit = level;
+        UpdateAppdata();
+    }
+
     void UpdateAppdata()
     {
         DataManager.Instance.appData.user = user;
         DataManager.Instance.SaveData();
     }
+
 
 }

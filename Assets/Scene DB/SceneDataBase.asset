@@ -25,3 +25,5 @@ MonoBehaviour:
     sceneName: 5 Store
   - id: 2
     sceneName: 6 Settings
+  - id: 6
+    sceneName: 7 TaskPage

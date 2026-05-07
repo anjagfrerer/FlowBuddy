@@ -8,6 +8,7 @@ public class Task
     private string description;
     private DateTime due;
     private Subject subject;
+    public Boolean complete{get; set;} = false;
 
     public int GetId()
     {

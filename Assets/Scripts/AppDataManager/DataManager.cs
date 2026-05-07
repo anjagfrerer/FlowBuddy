@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
 
     private string filePath;
     public AppData appData;
+    public string selectedSubjectName; //speichert welches subject geklickt wurde
+    public string selectedTaskName;
 
     private void Awake()
     {
@@ -50,7 +52,7 @@ public class DataManager : MonoBehaviour
         if (appData.subjects.Exists(s => s.name == name))
             return;
 
-        appData.subjects.Add(new Subject { name = name });
+        appData.subjects.Add(new Subject { id = System.Guid.NewGuid().ToString(), name = name });
         SaveData();
     }
 

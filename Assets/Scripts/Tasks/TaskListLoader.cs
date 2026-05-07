@@ -38,18 +38,15 @@ public class TaskListLoader : MonoBehaviour
 
 
         string selectedSubjectName = DataManager.Instance.selectedSubjectName;
-        Debug.Log("Selected subject name: " + selectedSubjectName);
-        Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.name == selectedSubjectName);
-        Debug.Log("Found subject: " + (selectedSubject == null ? "NULL" : selectedSubject.id));
+        string selectedSubjectId = DataManager.Instance.selectedSubjectId;
 
-        Debug.Log("Selected subject name: " + selectedSubjectName);
-        Debug.Log("Found subject: " + (selectedSubject == null ? "NULL" : selectedSubject.id));
-        Debug.Log("Task count: " + DataManager.Instance.appData.tasks.Count);
+        Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.id == selectedSubjectId);
 
+        // Show all tasks of a specific subject
         foreach (var task in DataManager.Instance.appData.tasks)
         {
             if (task.subjectId == selectedSubject.id)
-                CreateButton(task.name);
+                CreateButton(task.title);
         }
     }
 

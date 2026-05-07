@@ -35,11 +35,11 @@ public class SubjectListLoader : MonoBehaviour
 
         foreach (var subject in DataManager.Instance.appData.subjects)
         {
-            CreateButton(subject.name);
+            CreateButton(subject.name, subject.id);
         }
     }
 
-    private void CreateButton(string subjectName)
+    private void CreateButton(string subjectName, string subjectId)
     {
         GameObject buttonObj = Instantiate(subjectPrefab, content);
 
@@ -52,6 +52,7 @@ public class SubjectListLoader : MonoBehaviour
         {
             Debug.Log("Subject clicked: " + subjectName);
             DataManager.Instance.selectedSubjectName = subjectName; // DataManager melden, welches Fach gewählt wurde
+            DataManager.Instance.selectedSubjectId = subjectId;
             Debug.Log("Subject selected");
             if (sceneChanger != null)
             {

@@ -43,7 +43,7 @@ public class TaskDataManager : MonoBehaviour
         }
         
         Task task = tasks.Find(t => t.id == id);
-        Debug.Log(task.name);
+        Debug.Log(task.title);
 
         return tasks.Find(t => t.id == id);
     }
@@ -60,7 +60,7 @@ public class TaskDataManager : MonoBehaviour
             return;
         }
 
-        task.name = name;
+        task.title = name;
         task.description = description;
         task.dueDateString = dueDateString;
 

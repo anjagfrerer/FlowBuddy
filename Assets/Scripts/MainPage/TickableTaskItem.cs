@@ -18,7 +18,7 @@ public class TickableTaskItem : MonoBehaviour
 
         completeToggle.isOn = false;
 
-        var subject = DataManager.Instance.appData.subjects.Find(s => s.id == task.subjectId);
+        var subject = DataManager.Instance.appData.subjects.Find(s => s.id.ToString() == task.subjectId);
         subjectText.text = subject != null ? subject.name.Substring(0, 1).ToUpper() : "?";
 
         completeToggle.onValueChanged.RemoveAllListeners();

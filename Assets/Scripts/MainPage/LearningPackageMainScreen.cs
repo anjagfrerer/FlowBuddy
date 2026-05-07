@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;          // Für den Slider
+using TMPro;                   // Für TextMeshProUGUI
 
 public class LearningPackageMainScreen : MonoBehaviour
 {

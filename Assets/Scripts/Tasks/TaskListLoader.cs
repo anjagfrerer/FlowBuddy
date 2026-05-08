@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class TaskListLoader : MonoBehaviour
 {
@@ -10,12 +12,13 @@ public class TaskListLoader : MonoBehaviour
 
     [Header("Navigation")]
     [SerializeField] private SceneChanger sceneChanger;
+    [SerializeField] private SortAndFilterTasks sortAndFilterTasks;
 
     private void OnEnable()
     {
         if (sceneChanger == null)
         {
-            sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
+            sceneChanger = FindAnyObjectByType<SceneChanger>();
         }
     }
 
@@ -47,6 +50,24 @@ public class TaskListLoader : MonoBehaviour
         {
             if (task.subjectId == selectedSubject.id)
                 CreateButton(task.title);
+        }
+    }
+
+    public void LoadTasksFromQuery()
+    {
+        if (DataManager.Instance == null ||
+            DataManager.Instance.appData == null ||
+            DataManager.Instance.appData.tasks == null)
+        {
+            Debug.LogWarning("No tasks found");
+            return;
+        }
+
+        ClearContent();
+
+        foreach (Task task in sortAndFilterTasks.StartSearchAndLoadTasksToList())
+        {
+            CreateButton(task.title);
         }
     }
 

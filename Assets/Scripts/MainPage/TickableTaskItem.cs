@@ -14,7 +14,7 @@ public class TickableTaskItem : MonoBehaviour
     public void Setup(Task task)
     {
         currentTask = task;
-        titleText.text = task.name;
+        titleText.text = task.title;
 
         completeToggle.isOn = false;
 

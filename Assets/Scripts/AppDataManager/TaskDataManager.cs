@@ -74,7 +74,7 @@ public class TaskDataManager : MonoBehaviour
 
         if (task == null) return;
 
-        task.name = title;
+        task.title = title;
         task.description = description;
         task.dueDateString = dueDateString;
 

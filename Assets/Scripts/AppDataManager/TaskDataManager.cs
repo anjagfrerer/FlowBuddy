@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using System;
 
 public class TaskDataManager : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class TaskDataManager : MonoBehaviour
     }
 
     // Update
-    public void UpdateTask(string id, string title, string description, string dueDateString)
+    /**public void UpdateTask(string id, string title, string description, string dueDateString)
     {
         Task task = tasks.Find(task => task.id == id);
 
@@ -63,6 +64,28 @@ public class TaskDataManager : MonoBehaviour
         task.title = name;
         task.description = description;
         task.dueDateString = dueDateString;
+
+        DataManager.Instance.SaveData();
+    }**/
+
+    public void UpdateTask(string id, string title, string description, string dueDateString, int effort, bool done)
+    {
+        Task task = tasks.Find(t => t.id == id);
+
+        if (task == null) return;
+
+        task.name = title;
+        task.description = description;
+        task.dueDateString = dueDateString;
+
+        task.estimatedEffort = effort;
+        task.isDone = done;
+
+        // für die Sortierung
+        if (DateTime.TryParse(dueDateString, out DateTime parsedDate))
+        {
+            task.dueDateTicks = parsedDate.Ticks;
+        }
 
         DataManager.Instance.SaveData();
     }
@@ -81,3 +104,4 @@ public class TaskDataManager : MonoBehaviour
     }
 
 }
+ 

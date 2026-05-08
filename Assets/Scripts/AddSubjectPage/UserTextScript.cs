@@ -7,6 +7,7 @@ public class UserTextScript : MonoBehaviour
     void Start()
     {
         TMP_Text text = GetComponent<TMP_Text>();
+
         string username = DataManager.Instance.appData.user.username;
 
         if(text == null)

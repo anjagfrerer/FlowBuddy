@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class SubjectListLoader : MonoBehaviour
+public class TaskListLoader : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private Transform content;
-    [SerializeField] private GameObject subjectPrefab;
+    [SerializeField] private GameObject taskPrefab;
 
     [Header("Navigation")]
     [SerializeField] private SceneChanger sceneChanger;
@@ -17,43 +17,52 @@ public class SubjectListLoader : MonoBehaviour
         {
             sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
         }
-
-        LoadSubjects();
     }
 
-    private void LoadSubjects()
+    private void Start()
+    {
+        LoadTasks();
+    }
+
+    private void LoadTasks()
     {
         ClearContent();
 
         if (DataManager.Instance == null ||
             DataManager.Instance.appData == null ||
-            DataManager.Instance.appData.subjects == null)
+            DataManager.Instance.appData.tasks == null)
         {
-            Debug.LogWarning("No subjects found");
+            Debug.LogWarning("No tasks found");
             return;
         }
 
-        foreach (var subject in DataManager.Instance.appData.subjects)
+
+        string selectedSubjectName = DataManager.Instance.selectedSubjectName;
+        string selectedSubjectId = DataManager.Instance.selectedSubjectId;
+
+        Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.id == selectedSubjectId);
+
+        // Show all tasks of a specific subject
+        foreach (var task in DataManager.Instance.appData.tasks)
         {
-            CreateButton(subject.name, subject.id);
+            if (task.subjectId == selectedSubject.id)
+                CreateButton(task.title);
         }
     }
 
-    private void CreateButton(string subjectName, string subjectId)
+    private void CreateButton(string taskName)
     {
-        GameObject buttonObj = Instantiate(subjectPrefab, content);
+        GameObject buttonObj = Instantiate(taskPrefab, content);
 
         TMP_Text text = buttonObj.transform.Find("Text").GetComponent<TMP_Text>();
-        text.text = subjectName;
+        text.text = taskName;
 
         Button button = buttonObj.GetComponent<Button>();
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
-            Debug.Log("Subject clicked: " + subjectName);
-            DataManager.Instance.selectedSubjectName = subjectName; // DataManager melden, welches Fach gewählt wurde
-            DataManager.Instance.selectedSubjectId = subjectId;
-            Debug.Log("Subject selected");
+            Debug.Log("Subject clicked: " + taskName);
+            DataManager.Instance.selectedTaskName = taskName; // DataManager melden, welche Task gewählt wurde
             if (sceneChanger != null)
             {
                 sceneChanger.Load(SceneID.TaskPage);

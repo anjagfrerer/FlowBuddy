@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# TextMeshPro font assets should never be merged
+*.asset merge=binary
+*.ttf merge=binary
+*.otf merge=binary
+*.fnt merge=binary
+*.png merge=binary
+*.atlas merge=binary

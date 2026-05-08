@@ -28,9 +28,6 @@ public class SortAndFilterTasks : MonoBehaviour
     {
         tasks = DataManager.Instance.appData.tasks.Where(
             t => t.subjectId == DataManager.Instance.selectedSubjectId);
-
-        if(tasks.Count() == 0)
-            tasks = DataManager.Instance.appData.tasks;
     }
 
     public void SetDescending()

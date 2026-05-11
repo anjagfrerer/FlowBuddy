@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class TaskListLoader : MonoBehaviour
 {
+    public GameObject manageTasksPanel;
+    public GameObject configureTaskPanel;
+
     [Header("UI")]
     [SerializeField] private Transform content;
     [SerializeField] private GameObject taskPrefab;
@@ -17,6 +20,9 @@ public class TaskListLoader : MonoBehaviour
         {
             sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
         }
+
+        manageTasksPanel.SetActive(false);
+        configureTaskPanel.SetActive(false);
     }
 
     private void Start()
@@ -57,21 +63,21 @@ public class TaskListLoader : MonoBehaviour
         TMP_Text text = buttonObj.transform.Find("Text").GetComponent<TMP_Text>();
         text.text = taskName;
 
-        Button button = buttonObj.GetComponent<Button>();
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() =>
-        {
-            Debug.Log("Subject clicked: " + taskName);
-            DataManager.Instance.selectedTaskName = taskName; // DataManager melden, welche Task gewählt wurde
-            if (sceneChanger != null)
-            {
-                sceneChanger.Load(SceneID.TaskPage);
-            }
-            else
-            {
-                Debug.LogError("SceneChanger fehlt in der Szene!");
-            }
-        });
+        // Button button = buttonObj.GetComponent<Button>();
+        // button.onClick.RemoveAllListeners();
+        // button.onClick.AddListener(() =>
+        // {
+        //     Debug.Log("Task clicked: " + taskName);
+        //     DataManager.Instance.selectedTaskName = taskName; // DataManager melden, welche Task gewählt wurde
+        //     if (sceneChanger != null)
+        //     {
+        //         sceneChanger.Load(SceneID.TaskPage);
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("SceneChanger fehlt in der Szene!");
+        //     }
+        // });
     }
 
     private void ClearContent()

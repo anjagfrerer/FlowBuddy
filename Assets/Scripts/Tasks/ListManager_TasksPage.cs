@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ListManager_TasksPage : MonoBehaviour
 {
     public TaskDataManager taskDataManager;
+    public GameObject configureTaskPanel;
 
     [Header("UI References")]
     public Button addButton;
@@ -53,42 +55,57 @@ public class ListManager_TasksPage : MonoBehaviour
         deleteButton.onClick.AddListener(() => OnDeleteButtonClicked(newItem, textComponent.text, taskId));
         //editButton.onClick.AddListener(() => OnEditButtonClicked(newItem, textComponent, editInput, editButton));
 
+        editButton.onClick.AddListener(() =>
+        {
+            DataManager.Instance.selectedTaskName = taskName;
+            Task selectedTask = DataManager.Instance.appData.tasks.Find(task => task.title == taskName);
+
+            configureTaskPanel.SetActive(true);
+            configureTaskPanel.GetComponent<ConfigureTask>().Initialize(selectedTask);
+            
+            //OnEditButtonClicked(selectedTask);
+        });
+
         items.Add(newItem);
     }
 
-    // private void OnEditButtonClicked(GameObject item, TMP_Text textComp, TMP_InputField inputComp, Button btn)
-    // {
-    //     if (!inputComp.gameObject.activeSelf)
-    //     {
-    //         textComp.gameObject.SetActive(false);
-    //         inputComp.gameObject.SetActive(true);
-    //         inputComp.text = textComp.text;
-    //         btn.image.sprite = saveIcon;
-    //         inputComp.ActivateInputField();
-    //     }
-    //     else
-    //     {
-    //         string oldName = textComp.text;
-    //         string newName = inputComp.text.Trim();
+    private void OnEditButtonClicked(Task existingTask)
+    {
+        
 
-    //         if (IsNameValid(newName, oldName))
-    //         {
-    //             if (newName != oldName)
-    //             {
-    //                 DataManager.Instance.EditSubject(oldName, newName);
 
-    //                 textComp.text = newName;
 
-    //                 UIManager ui = Object.FindFirstObjectByType<UIManager>();
-    //                 if (ui != null) ui.ShowToast($"Subject renamed to {newName}!");
-    //             }
+        // if (!inputComp.gameObject.activeSelf)
+        // {
+        //     textComp.gameObject.SetActive(false);
+        //     inputComp.gameObject.SetActive(true);
+        //     inputComp.text = textComp.text;
+        //     btn.image.sprite = saveIcon;
+        //     inputComp.ActivateInputField();
+        // }
+        // else
+        // {
+        //     string oldName = textComp.text;
+        //     string newName = inputComp.text.Trim();
 
-    //             textComp.gameObject.SetActive(true);
-    //             inputComp.gameObject.SetActive(false);
-    //             btn.image.sprite = editIcon;
-    //         }
-    //     }
-    // }
+        //     if (IsNameValid(newName, oldName))
+        //     {
+        //         if (newName != oldName)
+        //         {
+        //             DataManager.Instance.EditSubject(oldName, newName);
+
+        //             textComp.text = newName;
+
+        //             UIManager ui = Object.FindFirstObjectByType<UIManager>();
+        //             if (ui != null) ui.ShowToast($"Subject renamed to {newName}!");
+        //         }
+
+        //         textComp.gameObject.SetActive(true);
+        //         inputComp.gameObject.SetActive(false);
+        //         btn.image.sprite = editIcon;
+        //     }
+        // }
+    }
 
     private void OnDeleteButtonClicked(GameObject item, string taskName, string taskId)
     {
@@ -109,7 +126,7 @@ public class ListManager_TasksPage : MonoBehaviour
         }
     }
 
-    private void RefreshList()
+    public void RefreshList()
     {
         foreach (GameObject item in items) Destroy(item);
         items.Clear();

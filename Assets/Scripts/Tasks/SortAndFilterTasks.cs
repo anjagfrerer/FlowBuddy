@@ -93,7 +93,7 @@ public class SortAndFilterTasks : MonoBehaviour
         else
         {
             if (sortBy == SORTBY.Date)
-                return tasks.OrderBy(t => t.dueDateString);
+                return tasks.OrderBy(t => t.dueDateTicks);
             else if (sortBy == SORTBY.Effort)
                 return tasks.OrderBy(t => t.estimatedEffort);
         }

@@ -54,14 +54,14 @@ public class TaskDataManager : MonoBehaviour
     {
         Task task = tasks.Find(task => task.id == id);
 
-        // If task doesn't exists
+        // If task doesn't exist
         if (task == null)
         {
             Debug.Log("Update task failed");
             return;
         }
 
-        task.title = name;
+        task.title = title;
         task.description = description;
         task.dueDateString = dueDateString;
 

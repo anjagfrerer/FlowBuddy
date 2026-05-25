@@ -8,46 +8,87 @@ public class TickableTaskItem : MonoBehaviour
     public TextMeshProUGUI subjectText;
     public TextMeshProUGUI titleText;
     public Toggle completeToggle;
+    
+    [Header("Visuelles Feedback")]
+    public Color finishedTextColor = new Color(0.5f, 0.5f, 0.5f, 0.7f); 
+    private Color originalTitleColor;
+    private Color originalSubjectColor;
 
     private Task currentTask;
+    private LearningPackageMainScreen mainScreen; 
 
-    public void Setup(Task task)
+    private void Awake()
+    {
+        originalTitleColor = titleText.color;
+        originalSubjectColor = subjectText.color;
+    }
+
+    public void Setup(Task task, LearningPackageMainScreen screen)
     {
         currentTask = task;
+        mainScreen = screen;
         titleText.text = task.title;
 
-        completeToggle.isOn = false;
+        // 1. Listener entfernen, um Fehler beim automatischen Setzen zu vermeiden
+        completeToggle.onValueChanged.RemoveAllListeners();
+        
+        // 2. Zustand direkt aus den gespeicherten Daten setzen
+        completeToggle.isOn = task.isDone;
+        
+        if (task.isDone)
+        {
+            ApplyFinishedVisuals();
+        }
+        else
+        {
+            ResetVisuals();
+        }
 
         var subject = DataManager.Instance.appData.subjects.Find(s => s.id.ToString() == task.subjectId);
         subjectText.text = subject != null ? subject.name.Substring(0, 1).ToUpper() : "?";
 
-        completeToggle.onValueChanged.RemoveAllListeners();
+        // 3. Erst JETZT den Listener hinzufügen, damit er nur auf echte Klicks reagiert
         completeToggle.onValueChanged.AddListener((isOn) => {
-            if (isOn)
-            {
-                // Wir starten den verzögerten Ablauf
-                StartCoroutine(DelayedDeleteRoutine());
-            }
+            StartCoroutine(DelayedToggleRoutine(isOn));
         });
     }
 
-    private IEnumerator DelayedDeleteRoutine()
+    private IEnumerator DelayedToggleRoutine(bool isOn)
     {
-        // 1 Sekunde warten, damit der User den Haken auch sieht
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
+        
+        if (currentTask != null)
+        {
+            currentTask.isDone = isOn;
+            DataManager.Instance.SaveData(); 
+        }
 
-        Debug.Log("Jetzt wäre der task theoretisch gelöscht worden.");
+        if (mainScreen != null)
+        {
+            mainScreen.OnTaskStatusChangedInUI(isOn);
+        }
 
-        // Hier rufen wir die eigentliche Lösch-Logik auf
-        OnCompleteClicked();
+        if (isOn)
+        {
+            ApplyFinishedVisuals();
+        }
+        else
+        {
+            ResetVisuals();
+        }
     }
 
-    private void OnCompleteClicked()
+    private void ApplyFinishedVisuals()
     {
-        //currentTask.isDone = true;
-        //DataManager.Instance.SaveData();
+        titleText.color = finishedTextColor;
+        subjectText.color = finishedTextColor;
+        completeToggle.interactable = true; 
+    }
 
-        // Das Objekt wird aus der Liste im UI entfernt
-        // Destroy(gameObject);
+    private void ResetVisuals()
+    {
+        titleText.color = originalTitleColor;
+        subjectText.color = originalSubjectColor;
+        completeToggle.interactable = true;
     }
 }

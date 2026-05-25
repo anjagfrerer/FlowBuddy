@@ -12,14 +12,19 @@ public class SubjectListLoader : MonoBehaviour
     [SerializeField] private SceneChanger sceneChanger;
 
     private void OnEnable()
+{
+    if (sceneChanger == null)
     {
-        if (sceneChanger == null)
-        {
-            sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
-        }
-
-        LoadSubjects();
+        sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
     }
+
+    Invoke(nameof(DelayedLoad), 0.02f);
+}
+
+private void DelayedLoad()
+{
+    LoadSubjects();
+}
 
     private void LoadSubjects()
     {

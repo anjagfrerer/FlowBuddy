@@ -1,20 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;          // Für den Slider
-using TMPro;                   // Für TextMeshProUGUI
+using UnityEngine.UI;          
+using TMPro;                   
 
 public class LearningPackageMainScreen : MonoBehaviour
 {
     [Header("Zuweisung aus der Hierarchy")]
-    public Transform taskContentArea; // Hier ziehst du das "Content" Objekt rein
-    public GameObject taskPrefab;     // Dein Task-UI-Element als Prefab
+    public Transform taskContentArea; 
+    public GameObject taskPrefab;     
 
     [Header("Services")]
     public LearningPackageService packageService;
 
     [Header("Progress Bar")]
     public Slider progressBar;
-    public TextMeshProUGUI progressText; // Optional für "3/10 erledigt"
+    public TextMeshProUGUI progressText; 
+
+    private int totalTasksCount = 0;
+    private int completedTasksCount = 0;
+    private List<Task> currentDailyTasks = new List<Task>(); // Wir merken uns die geladenen Tasks
 
     void Start()
     {
@@ -23,40 +27,87 @@ public class LearningPackageMainScreen : MonoBehaviour
 
     public void RefreshUI()
     {
-        // Alte Prefabs löschen
         foreach (Transform child in taskContentArea) Destroy(child.gameObject);
 
-        // Paket generieren
-        List<Task> dailyTasks = packageService.GenerateDailyPackage();
+        // Paket über den Service holen
+        currentDailyTasks = packageService.GenerateDailyPackage();
 
-        // Prefabs instanziieren und befüllen
-        foreach (Task t in dailyTasks)
+        totalTasksCount = currentDailyTasks.Count;
+        completedTasksCount = 0; 
+        
+        // Zählen, wie viele bereits erledigt sind (wichtig für Seitenwechsel)
+        foreach (var t in currentDailyTasks)
+        {
+            if (t.isDone) completedTasksCount++;
+        }
+        
+        UpdateProgressVisuals(); 
+
+        foreach (Task t in currentDailyTasks)
         {
             GameObject go = Instantiate(taskPrefab, taskContentArea);
             TickableTaskItem uiItem = go.GetComponent<TickableTaskItem>();
 
             if (uiItem != null)
             {
-                uiItem.Setup(t);
+                uiItem.Setup(t, this);
             }
         }
     }
 
-    public void UpdateProgress(int completedCount, int totalCount)
+    public void OnTaskStatusChangedInUI(bool isCompleted)
     {
-        if (totalCount == 0)
+        if (isCompleted)
         {
-            progressBar.value = 0;
+            completedTasksCount++;
+        }
+        else
+        {
+            completedTasksCount--;
+        }
+
+        completedTasksCount = Mathf.Clamp(completedTasksCount, 0, totalTasksCount);
+        UpdateProgressVisuals();
+
+        // --- NEU: Prüfen, ob ALLE Aufgaben des aktuellen Pakets erledigt sind ---
+        if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
+        {
+            StartCoroutine(GenerateNextPackageRoutine());
+        }
+    }
+
+    // Wartet kurz, damit der Spieler sieht, dass die Bar voll ist, und lädt dann das neue Paket
+    private System.Collections.IEnumerator GenerateNextPackageRoutine()
+    {
+        yield return new WaitForSeconds(0.8f);
+
+        Debug.Log("Glückwunsch! Paket komplett gelöst. Bereite neues Lernpaket vor...");
+
+        // 1. Die aktuell erledigten Aufgaben endgültig aus den globalen App-Daten entfernen,
+        //    damit sie beim nächsten Generieren nicht wieder im Pool landen.
+        foreach (var completedTask in currentDailyTasks)
+        {
+            DataManager.Instance.appData.tasks.Remove(completedTask);
+        }
+        
+        // Daten speichern, damit die Aufgaben auch nach App-Neustart weg sind
+        DataManager.Instance.SaveData();
+
+        // 2. Komplett neues Paket generieren und UI frisch aufbauen
+        RefreshUI();
+    }
+
+    private void UpdateProgressVisuals()
+    {
+        if (totalTasksCount == 0)
+        {
+            if (progressBar != null) progressBar.value = 0;
             if (progressText != null) progressText.text = "0/0";
             return;
         }
 
-        // Berechnung des Prozentwerts (0.0 bis 1.0)
-        float progress = (float)completedCount / totalCount;
-        progressBar.value = progress;
-
-        // Text-Update (optional)
-        if (progressText != null)
-            progressText.text = $"{completedCount}/{totalCount}";
+        float progress = (float)completedTasksCount / totalTasksCount;
+        if (progressBar != null) progressBar.value = progress;
+        if (progressText != null) progressText.text = $"{completedTasksCount}/{totalTasksCount}";
     }
 }

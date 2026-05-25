@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2be7cacf0cf57a469857c529e4addba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  mainPanel: {fileID: 281792899}
+  mainPanel: {fileID: 6081511363073574782}
   addSubjectPanel: {fileID: 53604024}
   confirmDeleteCard: {fileID: 1032122880}
   yesButton: {fileID: 1915023292}
@@ -1075,9 +1075,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 69279338}
-  m_Father: {fileID: 1804312161}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5111,7 +5110,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 281792900}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -6291,7 +6290,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1439917799}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7493,11 +7492,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   taskDataManager: {fileID: 662505739}
-  configureTaskPanel: {fileID: 4969369888384699687}
   titleInput: {fileID: 175669023939200978}
   descriptionInput: {fileID: 568142230}
   dueDateInput: {fileID: 979064365}
-  effortInput: {fileID: 765498133}
 --- !u!222 &5360624804647441513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7822,6 +7819,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da777958892d7de98c7cd2b0bb9f027, type: 3}
+--- !u!1 &6081511363073574782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8181940929597668874, guid: 1da777958892d7de98c7cd2b0bb9f027, type: 3}
+  m_PrefabInstance: {fileID: 6081511363073574781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &6499985805160393747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8100,3 +8102,6 @@ SceneRoots:
   - {fileID: 1415797085}
   - {fileID: 662505740}
   - {fileID: 188978323}
+  - {fileID: 311874012}
+  - {fileID: 1646037667}
+  - {fileID: 2108809857}

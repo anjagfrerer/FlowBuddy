@@ -108,4 +108,9 @@ public class TaskListLoader : MonoBehaviour
             Destroy(content.GetChild(i).gameObject);
         }
     }
+
+    public void RefreshList()
+    {
+        LoadTasks();
+    }
 }

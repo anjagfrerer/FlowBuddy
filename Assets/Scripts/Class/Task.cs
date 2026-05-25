@@ -11,7 +11,7 @@ public class Task
     public string dueDateString;
 
     // von Anja hinzugefügt:
-    public int estimatedEffort = 30; // Aufwand in Minuten
+    public int estimatedEffort; // Aufwand in Minuten
     public long dueDateTicks;   // sortieren nach Datum
     public bool isDone;
 }

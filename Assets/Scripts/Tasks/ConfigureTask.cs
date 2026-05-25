@@ -55,7 +55,7 @@ public class ConfigureTask : MonoBehaviour
         if (isNew)
             taskDataManager.CreateTask(task);
         else
-            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString);
+            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString,0,false);
             
         configureTaskPanel.SetActive(false);
 

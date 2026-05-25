@@ -9,6 +9,7 @@ public class ConfigureTask : MonoBehaviour
     public TMP_InputField titleInput;
     public TMP_InputField descriptionInput;
     public TMP_InputField dueDateInput;
+    public Slider effortInput;
 
     private Task task;
 
@@ -30,12 +31,15 @@ public class ConfigureTask : MonoBehaviour
             {
                 id = System.Guid.NewGuid().ToString(),
                 subjectId = DataManager.Instance.appData.subjects
-                    .Find(s => s.name == DataManager.Instance.selectedSubjectName)?.id
+                    .Find(s => s.name == DataManager.Instance.selectedSubjectName)?.id,
+                isDone = false
             };
 
             titleInput.text = "";
             descriptionInput.text = "";
             dueDateInput.text = "";
+            effortInput.value = 30;
+            
         } else
         {
             // Edit existing task
@@ -45,21 +49,70 @@ public class ConfigureTask : MonoBehaviour
             titleInput.text = existingTask.title;
             descriptionInput.text = existingTask.description;
             dueDateInput.text = existingTask.dueDateString;
+            effortInput.value = existingTask.estimatedEffort;
         }
+    }
+
+    private bool AreFieldsValid(string newTitle, string description, string dueDate, string oldTitle = "")
+    {
+        if (string.IsNullOrWhiteSpace(newTitle))
+        {
+            Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leerer Titel");
+            FindObjectOfType<UIManager>().ShowToast($"Empty title!");
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(description))
+        {
+            Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leere Beschreibung");
+            FindObjectOfType<UIManager>().ShowToast($"Empty description!");
+            return false;
+        }
+
+        if (string.IsNullOrWhiteSpace(dueDate))
+        {
+            Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leeres Datum");
+            FindObjectOfType<UIManager>().ShowToast($"Empty due date!");
+            return false;
+        }
+
+        if (newTitle != oldTitle)
+        {
+            bool exists = DataManager.Instance.appData.tasks.Exists(s => s.title.Equals(newTitle, System.StringComparison.OrdinalIgnoreCase));
+
+            if (exists)
+            {
+                Debug.LogWarning($"Aufgabe '{newTitle}' existiert bereits");
+                FindObjectOfType<UIManager>().ShowToast($"Title already exists");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void saveTask()
     {
+        if(!AreFieldsValid(titleInput.text, descriptionInput.text, dueDateInput.text, isNew ? "" : task.title))
+            return;
+
         setFields();
 
         if (isNew)
             taskDataManager.CreateTask(task);
         else
-            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString,0,false);
+            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString, task.estimatedEffort, task.isDone);
+            // Effort and done missing
             
         configureTaskPanel.SetActive(false);
 
+        if (isNew)
+            FindObjectOfType<UIManager>().ShowToast($"{titleInput.text} added!");
+        else
+            FindObjectOfType<UIManager>().ShowToast($"{titleInput.text} updated!");
+
         FindObjectOfType<ListManager_TasksPage>().RefreshList();
+        FindObjectOfType<TaskListLoader>().RefreshList();
     }
 
     public void setFields()
@@ -67,5 +120,6 @@ public class ConfigureTask : MonoBehaviour
         task.title = titleInput.text;
         task.description = descriptionInput.text;
         task.dueDateString = dueDateInput.text;
+        task.estimatedEffort = (int)effortInput.value;
     }
 }

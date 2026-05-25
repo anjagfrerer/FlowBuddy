@@ -66,6 +66,7 @@ public class ConfigureTask : MonoBehaviour
         configureTaskPanel.SetActive(false);
 
         FindObjectOfType<ListManager_TasksPage>().RefreshList();
+        FindObjectOfType<TaskListLoader>().RefreshList();
     }
 
     public void setFields()

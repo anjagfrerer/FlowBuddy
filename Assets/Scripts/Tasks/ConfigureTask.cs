@@ -9,6 +9,7 @@ public class ConfigureTask : MonoBehaviour
     public TMP_InputField titleInput;
     public TMP_InputField descriptionInput;
     public TMP_InputField dueDateInput;
+    public Slider effortInput;
 
     private Task task;
 
@@ -30,12 +31,15 @@ public class ConfigureTask : MonoBehaviour
             {
                 id = System.Guid.NewGuid().ToString(),
                 subjectId = DataManager.Instance.appData.subjects
-                    .Find(s => s.name == DataManager.Instance.selectedSubjectName)?.id
+                    .Find(s => s.name == DataManager.Instance.selectedSubjectName)?.id,
+                isDone = false
             };
 
             titleInput.text = "";
             descriptionInput.text = "";
             dueDateInput.text = "";
+            effortInput.value = 30;
+            
         } else
         {
             // Edit existing task
@@ -45,6 +49,7 @@ public class ConfigureTask : MonoBehaviour
             titleInput.text = existingTask.title;
             descriptionInput.text = existingTask.description;
             dueDateInput.text = existingTask.dueDateString;
+            effortInput.value = existingTask.estimatedEffort;
         }
     }
 
@@ -68,5 +73,6 @@ public class ConfigureTask : MonoBehaviour
         task.title = titleInput.text;
         task.description = descriptionInput.text;
         task.dueDateString = dueDateInput.text;
+        task.estimatedEffort = (int)effortInput.value;
     }
 }

@@ -14,10 +14,16 @@ public class TaskListLoader : MonoBehaviour
     [SerializeField] private GameObject taskPrefab;
 
     [Header("Navigation")]
+    [SerializeField] private SceneChanger sceneChanger;
     [SerializeField] private SortAndFilterTasks sortAndFilterTasks;
 
     private void OnEnable()
     {
+        if (sceneChanger == null)
+        {
+            sceneChanger = FindAnyObjectByType<SceneChanger>();
+        }
+
         manageTasksPanel.SetActive(false);
         configureTaskPanel.SetActive(false);
     }
@@ -77,6 +83,22 @@ public class TaskListLoader : MonoBehaviour
 
         TMP_Text text = buttonObj.transform.Find("Text").GetComponent<TMP_Text>();
         text.text = taskName;
+
+        // Button button = buttonObj.GetComponent<Button>();
+        // button.onClick.RemoveAllListeners();
+        // button.onClick.AddListener(() =>
+        // {
+        //     Debug.Log("Task clicked: " + taskName);
+        //     DataManager.Instance.selectedTaskName = taskName; // DataManager melden, welche Task gewählt wurde
+        //     if (sceneChanger != null)
+        //     {
+        //         sceneChanger.Load(SceneID.TaskPage);
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("SceneChanger fehlt in der Szene!");
+        //     }
+        // });
     }
 
     private void ClearContent()

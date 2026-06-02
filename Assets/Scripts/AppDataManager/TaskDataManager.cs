@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System;
+using System.Globalization;
 
 public class TaskDataManager : MonoBehaviour
 {
@@ -82,11 +83,8 @@ public class TaskDataManager : MonoBehaviour
         task.isDone = done;
 
         // für die Sortierung
-        if (DateTime.TryParse(dueDateString, out DateTime parsedDate))
-        {
-            task.dueDateTicks = parsedDate.Ticks;
-        }
-
+        task.dueDateTicks = DateTime.Parse(dueDateString,new CultureInfo("de-DE")).Ticks;
+    
         DataManager.Instance.SaveData();
     }
 

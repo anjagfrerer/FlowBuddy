@@ -19,6 +19,7 @@ using System.Collections;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PickerPanelController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PickerPanelController : MonoBehaviour
 
     public GameObject calledByField; // field that called for the date/time picker
 
+    public GameObject Overlay;
 
     // -------------------------------------------------------------------------------
     // Start: picker hidden by default
@@ -49,6 +51,7 @@ public class PickerPanelController : MonoBehaviour
     {
         datePanel.SetActive(false);
         timePanel.SetActive(false);
+        Overlay.SetActive(false);
         transform.position = new Vector2(transform.position.x, hiddenYPos);
     }
 
@@ -64,6 +67,7 @@ public class PickerPanelController : MonoBehaviour
 
         if (callingField.tag == "dateField")
         {
+            Overlay.SetActive(true);
             datePanel.SetActive(true);
             timePanel.SetActive(false);
         }
@@ -81,6 +85,7 @@ public class PickerPanelController : MonoBehaviour
     // -------------------------------------------------------------------------------
     public void CancelPickerPanel()
     {
+        Overlay.SetActive(false);
         MovePickerPanel("hide");
     }
 
@@ -118,7 +123,7 @@ public class PickerPanelController : MonoBehaviour
             }
             var newYear = yyyyScrollView.GetComponent<PickerScrollController>().scrollContentArea.transform.GetChild(yyyyi).name;
 
-            formattedData = newMonth + "/" + newDay + "/" + newYear;
+            formattedData = newDay + "." + newMonth + "." + newYear;
         }
 
         // Format and update time
@@ -154,6 +159,7 @@ public class PickerPanelController : MonoBehaviour
         targetTopYPos = shownYPos; // default is open the picker
         if (direction == "hide")
         {
+            Overlay.SetActive(false);
             targetTopYPos = hiddenYPos;
         }
 
@@ -162,19 +168,22 @@ public class PickerPanelController : MonoBehaviour
 
     IEnumerator AnimateMovement(string direction)
     {
-        float verticalInput = -1 * (targetTopYPos * Time.deltaTime);
+        // float verticalInput = -1 * (targetTopYPos * Time.deltaTime);
+        
+        // while (direction == "show" && transform.position.y > targetTopYPos)
+        // {
+        //     transform.Translate(new Vector3(0f, verticalInput, 0f));
+        //     yield return null;
+        // }
 
-        while (direction == "show" && transform.position.y > targetTopYPos)
-        {
-            transform.Translate(new Vector3(0f, verticalInput, 0f));
-            yield return null;
-        }
+        // while (direction == "hide" && transform.position.y < targetTopYPos)
+        // {
+        //     transform.Translate(new Vector3(0f, -verticalInput, 0f));
+        //     yield return null;
+        // }
+        yield return null;
+        transform.position = new Vector3(transform.position.x,targetTopYPos,transform.position.z);
 
-        while (direction == "hide" && transform.position.y < targetTopYPos)
-        {
-            transform.Translate(new Vector3(0f, -verticalInput, 0f));
-            yield return null;
-        }
         initializeDateTimePickers();
     }
 
@@ -188,10 +197,13 @@ public class PickerPanelController : MonoBehaviour
         {
             var initialDateValue = calledByField.GetComponent<TMP_InputField>().text;
             DateTime currentDateValue = DateTime.Today; // default to today if date field is empty
+
+            Debug.Log($"Initial Date Value: {initialDateValue}");
+
             if (initialDateValue != "" && initialDateValue != "n/a")
             {
                 // get the date field value if it's not empty
-                currentDateValue = DateTime.ParseExact(initialDateValue, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                currentDateValue = DateTime.ParseExact(initialDateValue, "dd.MM.yyyy", CultureInfo.InvariantCulture);
             }
             mmScrollView.GetComponent<PickerScrollController>().SetInitialTargetedItem(currentDateValue.Month - 1);
             yyyyScrollView.GetComponent<PickerScrollController>().SetInitialTargetedItem(currentDateValue.Year - 1999); // list start year is 1999

@@ -2,7 +2,7 @@
 
 public class ShopItem
 {
-    private string name;
-    private string image;
-    private int price;
+    public string name;
+    public string image;
+    public int price;
 }

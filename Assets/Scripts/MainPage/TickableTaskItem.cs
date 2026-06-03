@@ -60,6 +60,12 @@ public class TickableTaskItem : MonoBehaviour
         if (currentTask != null)
         {
             currentTask.isDone = isOn;
+
+            if (isOn)
+            {
+                DataManager.Instance.appData.user.coins += 10;
+            }
+
             DataManager.Instance.SaveData(); 
         }
 

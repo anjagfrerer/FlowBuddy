@@ -6,13 +6,3 @@ public enum Mood
     Okay,
     Sad
 }
-public class DragonState : MonoBehaviour
-{
-    [SerializeField] private Mood currentMood;
-
-    void SetMood(Mood mood)
-    {
-        currentMood = mood;
-    }
-
-}

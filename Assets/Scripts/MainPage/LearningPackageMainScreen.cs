@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;          
-using TMPro;                   
+using TMPro;
+using System.Linq;
 
 public class LearningPackageMainScreen : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class LearningPackageMainScreen : MonoBehaviour
     private int totalTasksCount = 0;
     private int completedTasksCount = 0;
     private List<Task> currentDailyTasks = new List<Task>(); // Wir merken uns die geladenen Tasks
+    private int currentPackageValue;
 
     void Start()
     {
@@ -31,6 +33,11 @@ public class LearningPackageMainScreen : MonoBehaviour
 
         // Paket über den Service holen
         currentDailyTasks = packageService.GenerateDailyPackage();
+
+        // Fügt einen StatusUpdateWert zur currentPackageValue hinzu
+        // @amecake: Wenn die Gamification ansteht, könnte dieser Teil der LerningPackage durch einen Geldwert ersetzt werden
+        //           Sodass das Füttern des Drachen die Tatsächliche Statusleiste ändert
+        currentPackageValue = currentDailyTasks.Sum(t => t.estimatedEffort);
 
         totalTasksCount = currentDailyTasks.Count;
         completedTasksCount = 0; 
@@ -72,6 +79,10 @@ public class LearningPackageMainScreen : MonoBehaviour
         // --- NEU: Prüfen, ob ALLE Aufgaben des aktuellen Pakets erledigt sind ---
         if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
         {
+            /// Wenn die Learning Package fertig ist, wird die Value zur statusleiste hinzugefügt
+            /// @amecake: Beim shop hieße das nun, dass es zum geldwert hinzugefügt wird.
+            StatusBarManager.OnStatusValueAdd(currentPackageValue);
+
             StartCoroutine(GenerateNextPackageRoutine());
         }
     }

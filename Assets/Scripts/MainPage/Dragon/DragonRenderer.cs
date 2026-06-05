@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 public class DragonRenderer : MonoBehaviour
@@ -13,14 +14,17 @@ public class DragonRenderer : MonoBehaviour
     [SerializeField] Image dragonWings;
     [SerializeField] Image dragonArms;
 
+    public static Action<Mood> OnChangeMood;
+    public static Action OnPackageComplete;
+
     void OnEnable()
     {
-        MoodEvents.OnChangeMood += SetMood;
+        OnChangeMood += SetMood;
     }
 
     void OnDisable()
     {
-        MoodEvents.OnChangeMood -= SetMood;
+        OnChangeMood -= SetMood;
     }
 
     void SetMood(Mood mood)

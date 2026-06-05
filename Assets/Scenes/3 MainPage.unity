@@ -688,8 +688,10 @@ GameObject:
   m_Component:
   - component: {fileID: 236311649}
   - component: {fileID: 236311650}
+  - component: {fileID: 236311651}
+  - component: {fileID: 236311652}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: StatusBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,6 +770,32 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &236311651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236311648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcb4a249c161f5b4b04953a67b0fc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusBarManager
+  maxHappy: 60
+  maxOkay: 20
+--- !u!114 &236311652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236311648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc75835d5e1693c383059230c01ee72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusBarUI
 --- !u!1 &373552520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,7 +2917,7 @@ GameObject:
   - component: {fileID: 1731082774}
   - component: {fileID: 1731082775}
   m_Layer: 5
-  m_Name: Row6
+  m_Name: 'Row6: StatusBar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3507,18 +3535,6 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3565,10 +3581,6 @@ PrefabInstance:
     - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583082479071065150, guid: 161fa76148cb8fa24a0da39bea3bd58f, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

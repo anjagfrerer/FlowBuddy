@@ -35,7 +35,7 @@ public class StatusBarManager : MonoBehaviour
     {
         DataManager.Instance.appData.StatusValue += value;
         DataManager.Instance.SaveData();
-        Debug.Log(DataManager.Instance.appData.StatusValue);
+        statusBar.UpdateStatusBar(DataManager.Instance.appData.StatusValue);
         DragonRenderer.OnChangeMood(CheckMood(DataManager.Instance.appData.StatusValue));
     }
 

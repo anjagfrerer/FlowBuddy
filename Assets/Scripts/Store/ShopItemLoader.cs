@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class ShopItemLoader : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ShopItemLoader : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("ShopItemLoader Start, item count: " + shopItems.Count);
         LoadItems();
     }
 
@@ -22,13 +24,16 @@ public class ShopItemLoader : MonoBehaviour
     }
 
     private void AddListItem(ShopItem item)
-{
-    GameObject newItem = Instantiate(shopItemButton, content);
-    
-    TMP_Text nameText = newItem.transform.Find("Name").GetComponent<TMP_Text>();
-    TMP_Text priceText = newItem.transform.Find("Price").GetComponent<TMP_Text>();
+    {
+        GameObject newItem = Instantiate(shopItemButton, content);
+        Debug.Log("Instantiated: " + newItem.name + " parent: " + newItem.transform.parent.name);
+        
+        TMP_Text nameText = newItem.transform.Find("InfoPanel/Name").GetComponent<TMP_Text>();
+        TMP_Text priceText = newItem.transform.Find("InfoPanel/Price/PriceText").GetComponent<TMP_Text>();
+        Image img = newItem.transform.Find("Image").GetComponent<Image>();
 
-    nameText.text = item.name;
-    priceText.text = item.price + " coins";
-}
+        nameText.text = item.name;
+        priceText.text = item.price + " coins";
+        img.sprite = item.image;
+    }
 }

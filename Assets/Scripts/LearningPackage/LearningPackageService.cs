@@ -7,10 +7,10 @@ public class LearningPackageService : MonoBehaviour
     public List<Task> GenerateDailyPackage()
     {
         var allTasks = DataManager.Instance.appData.tasks;
-        int energyLimit = DataManager.Instance.appData.user.energyLimit;
+        
+        int energyLimit = PlayerPrefs.GetInt("User_Selected_EnergyLimit", 60);
+        Debug.Log($"[Service] Berechne Paket mit einem Limit von: {energyLimit} Minuten.");
 
-        // KORREKTUR: Wir filtern hier NICHT nach !isDone. 
-        // Solange die Tasks in allTasks existieren, gehören sie zum aktuellen Paket.
         var prioritizedTasks = allTasks
             .OrderBy(t => t.dueDateTicks) 
             .ThenBy(t => t.estimatedEffort) 

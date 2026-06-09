@@ -29,10 +29,8 @@ public class TickableTaskItem : MonoBehaviour
         mainScreen = screen;
         titleText.text = task.title;
 
-        // 1. Listener entfernen, um Fehler beim automatischen Setzen zu vermeiden
         completeToggle.onValueChanged.RemoveAllListeners();
         
-        // 2. Zustand direkt aus den gespeicherten Daten setzen
         completeToggle.isOn = task.isDone;
         
         if (task.isDone)
@@ -47,7 +45,6 @@ public class TickableTaskItem : MonoBehaviour
         var subject = DataManager.Instance.appData.subjects.Find(s => s.id.ToString() == task.subjectId);
         subjectText.text = subject != null ? subject.name.Substring(0, 1).ToUpper() : "?";
 
-        // 3. Erst JETZT den Listener hinzufügen, damit er nur auf echte Klicks reagiert
         completeToggle.onValueChanged.AddListener((isOn) => {
             StartCoroutine(DelayedToggleRoutine(isOn));
         });

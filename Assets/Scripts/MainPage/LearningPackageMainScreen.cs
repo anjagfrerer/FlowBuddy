@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;          
@@ -5,7 +6,9 @@ using TMPro;
 
 public class LearningPackageMainScreen : MonoBehaviour
 {
-    [Header("Zuweisung aus der Hierarchy")]
+    public static event Action OnTaskMissed;
+
+    [Header("Hierarchy Assignments")]
     public Transform taskContentArea; 
     public GameObject taskPrefab;     
 
@@ -16,9 +19,12 @@ public class LearningPackageMainScreen : MonoBehaviour
     public Slider progressBar;
     public TextMeshProUGUI progressText; 
 
+    [Header("Toast Notification")]
+    public ToastNotification toastWindow;
+
     private int totalTasksCount = 0;
     private int completedTasksCount = 0;
-    private List<Task> currentDailyTasks = new List<Task>(); // Wir merken uns die geladenen Tasks
+    private List<Task> currentDailyTasks = new List<Task>(); 
 
     void Start()
     {
@@ -29,13 +35,11 @@ public class LearningPackageMainScreen : MonoBehaviour
     {
         foreach (Transform child in taskContentArea) Destroy(child.gameObject);
 
-        // Paket über den Service holen
         currentDailyTasks = packageService.GenerateDailyPackage();
 
         totalTasksCount = currentDailyTasks.Count;
         completedTasksCount = 0; 
         
-        // Zählen, wie viele bereits erledigt sind (wichtig für Seitenwechsel)
         foreach (var t in currentDailyTasks)
         {
             if (t.isDone) completedTasksCount++;
@@ -69,31 +73,35 @@ public class LearningPackageMainScreen : MonoBehaviour
         completedTasksCount = Mathf.Clamp(completedTasksCount, 0, totalTasksCount);
         UpdateProgressVisuals();
 
-        // --- NEU: Prüfen, ob ALLE Aufgaben des aktuellen Pakets erledigt sind ---
         if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
         {
             StartCoroutine(GenerateNextPackageRoutine());
         }
     }
 
-    // Wartet kurz, damit der Spieler sieht, dass die Bar voll ist, und lädt dann das neue Paket
     private System.Collections.IEnumerator GenerateNextPackageRoutine()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.4f);
 
-        Debug.Log("Glückwunsch! Paket komplett gelöst. Bereite neues Lernpaket vor...");
+        if (toastWindow != null)
+        {
+            toastWindow.ShowToast("Congratulations! You completed the learning package!", 3.0f);
+        }
 
-        // 1. Die aktuell erledigten Aufgaben endgültig aus den globalen App-Daten entfernen,
-        //    damit sie beim nächsten Generieren nicht wieder im Pool landen.
+        yield return new WaitForSeconds(2.6f);
+
+        Debug.Log("Preparing new learning package...");
+
         foreach (var completedTask in currentDailyTasks)
         {
+            if (!completedTask.isDone)
+            {
+                OnTaskMissed?.Invoke();
+            }
             DataManager.Instance.appData.tasks.Remove(completedTask);
         }
         
-        // Daten speichern, damit die Aufgaben auch nach App-Neustart weg sind
         DataManager.Instance.SaveData();
-
-        // 2. Komplett neues Paket generieren und UI frisch aufbauen
         RefreshUI();
     }
 

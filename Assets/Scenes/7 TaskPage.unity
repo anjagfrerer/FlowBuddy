@@ -4150,7 +4150,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2135972084}
   m_HandleRect: {fileID: 2135972083}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5321,6 +5321,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1147629055}
     m_Modifications:
+    - target: {fileID: 386380250464299316, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3029123779978461598, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: Overlay
       value: 
@@ -5331,7 +5335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3029123779978461598, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: hiddenYPos
-      value: 2500
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 3029123779978461598, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: appearanceSpeed
@@ -5340,6 +5344,10 @@ PrefabInstance:
     - target: {fileID: 5332630155117845467, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: m_Name
       value: PickerPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813056930325879872, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6952663876486201364, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: m_SizeDelta.y
@@ -5353,6 +5361,10 @@ PrefabInstance:
       propertyPath: timePickerPanel
       value: 
       objectReference: {fileID: 1386246674}
+    - target: {fileID: 7393615173759334614, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7524889059697818837, guid: f9b29667509f1c0719918ad35d26b455, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -7927,7 +7939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 515}
+  m_AnchoredPosition: {x: 0, y: 614.81134}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2652097952138901714
@@ -11104,8 +11116,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8312843006373436349}
   m_HandleRect: {fileID: 3599816939822167024}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11233,7 +11245,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9073669418800859958}
   m_HandleRect: {fileID: 5191819097378296946}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12255,7 +12267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.0238037, y: 0}
+  m_AnchoredPosition: {x: 4.0238037, y: -0.000091552734}
   m_SizeDelta: {x: 8.0476, y: 73.0859}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1660057539 &9223372036854775807

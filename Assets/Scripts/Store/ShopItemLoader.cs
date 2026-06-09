@@ -35,5 +35,10 @@ public class ShopItemLoader : MonoBehaviour
         nameText.text = item.name;
         priceText.text = item.price + " coins";
         img.sprite = item.image;
+
+        Button button = newItem.GetComponent<Button>();
+        button.onClick.AddListener(() => {
+            FindObjectOfType<CheckoutPanel>().SelectItem(item);
+        });
     }
 }

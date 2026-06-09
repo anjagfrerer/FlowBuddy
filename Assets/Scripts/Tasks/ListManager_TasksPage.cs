@@ -131,9 +131,16 @@ public class ListManager_TasksPage : MonoBehaviour
         foreach (GameObject item in items) Destroy(item);
         items.Clear();
 
+        string selectedSubjectName = DataManager.Instance.selectedSubjectName;
+        string selectedSubjectId = DataManager.Instance.selectedSubjectId;
+
+        Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.id == selectedSubjectId);
+
+        // Show all tasks of a specific subject
         foreach (var task in DataManager.Instance.appData.tasks)
         {
-            AddListItem(task.id, task.title);
+            if (task.subjectId == selectedSubject.id)
+                AddListItem(task.id, task.title);
         }
     }
 

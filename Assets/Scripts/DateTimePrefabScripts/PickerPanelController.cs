@@ -117,7 +117,7 @@ public class PickerPanelController : MonoBehaviour
                 newMonth = "0" + newMonth;
             }
             var newDay = ddScrollView.GetComponent<PickerScrollController>().scrollContentArea.transform.GetChild(ddi).name;
-            if (ddi < 10)
+            if (ddi < 9)
             {
                 newDay = "0" + newDay;
             }

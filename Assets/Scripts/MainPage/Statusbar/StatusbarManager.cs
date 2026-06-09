@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// The Dragon Script makes the dragon an instance, and therefore persists his gameobject through scenes

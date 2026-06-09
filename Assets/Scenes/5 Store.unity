@@ -262,33 +262,43 @@ MonoBehaviour:
   - name: Apple
     price: 20
     image: {fileID: 21300000, guid: 7660b40d1800e9d4cbc840c07030de47, type: 3}
+    category: food
   - name: Banana
     price: 30
     image: {fileID: 21300000, guid: cb2a358cb282dd34d9b866d1e6b70838, type: 3}
+    category: food
   - name: Melon
     price: 35
     image: {fileID: 21300000, guid: f262d89669c2e1e468c5609c48e1ae20, type: 3}
+    category: food
   - name: Strawberry
     price: 25
     image: {fileID: 21300000, guid: 4348e1db336f23c498ae4007470d22e9, type: 3}
+    category: food
   - name: Grapes
     price: 15
     image: {fileID: 21300000, guid: 6ca8c74ed9d3e044dadb75bf23419b26, type: 3}
+    category: food
   - name: BeanieWithTassels
     price: 100
     image: {fileID: 21300000, guid: 365ff2c6a5538604bbdf475c76e47513, type: 3}
+    category: clothes
   - name: BirthdayHat
     price: 80
     image: {fileID: 21300000, guid: 6ef9909c8d130c64389cc9c0eb91f220, type: 3}
+    category: clothes
   - name: SunHat
     price: 120
     image: {fileID: 21300000, guid: 5710bba253f773f48a947cde911e3f31, type: 3}
+    category: clothes
   - name: SantaHat
     price: 140
     image: {fileID: 21300000, guid: 6f955f561c703214d917cbf06a092999, type: 3}
+    category: clothes
   - name: GraduationHat
     price: 130
     image: {fileID: 21300000, guid: 536652903ec463b4a924bcb28b6918ce, type: 3}
+    category: clothes
 --- !u!1 &262232444
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +628,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 328466985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 245821087}
+        m_TargetAssemblyTypeName: ShopItemLoader, Assembly-CSharp
+        m_MethodName: ShowAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &328466985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2553,7 +2575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Other
+  m_text: All
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 51d2b488baaf16e40ae792dee9d0b7a3, type: 2}
   m_sharedMaterial: {fileID: 5571215211070631888, guid: 51d2b488baaf16e40ae792dee9d0b7a3, type: 2}
@@ -3379,7 +3401,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1656757990}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 245821087}
+        m_TargetAssemblyTypeName: ShopItemLoader, Assembly-CSharp
+        m_MethodName: FilterByCategory
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: clothes
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1656757990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3897,7 +3931,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820197934}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 245821087}
+        m_TargetAssemblyTypeName: ShopItemLoader, Assembly-CSharp
+        m_MethodName: FilterByCategory
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: food
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1820197934
 MonoBehaviour:
   m_ObjectHideFlags: 0

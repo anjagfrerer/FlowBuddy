@@ -19,14 +19,13 @@ using System.Collections;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PickerPanelController : MonoBehaviour
 {
-    // position and appearance vars
-    public float appearanceSpeed = 20f;
-    public float hiddenYPos = 11.5f;
-    public float shownYPos = 4.0f;
+
+    [SerializeField] private Transform showTransform;
+    private float hiddenYPos;
+    private float shownYPos;
     private float targetTopYPos;
 
     // Date panel objects
@@ -49,6 +48,9 @@ public class PickerPanelController : MonoBehaviour
     // -------------------------------------------------------------------------------
     void Start()
     {
+        shownYPos = Screen.height/1.8f;
+        hiddenYPos = Screen.height + gameObject.GetComponent<RectTransform>().sizeDelta.y*2;
+
         datePanel.SetActive(false);
         timePanel.SetActive(false);
         Overlay.SetActive(false);

@@ -16,7 +16,6 @@ public class DataManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Debug.LogWarning($"An instance of {gameObject} already exists! Deleting...");
             Destroy(gameObject);
             return;
         }

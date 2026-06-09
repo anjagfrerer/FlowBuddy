@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,12 +140,12 @@ TextureImporter:
       name: Arms_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 7
-        width: 23
-        height: 45
+        x: 0
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: Arms_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 7
-        width: 23
-        height: 45
+        x: 80
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: Arms_2
       rect:
         serializedVersion: 2
-        x: 94
-        y: 11
-        width: 25
-        height: 40
+        x: 160
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -206,19 +206,19 @@ TextureImporter:
       name: Arms_3
       rect:
         serializedVersion: 2
-        x: 120
-        y: 11
-        width: 25
-        height: 40
+        x: 240
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9fa0c2eb53d61ddf0800000000000000
+      spriteID: 82aa1538e265c3c54a0b4b4e5f6f2882
       internalID: -157224434390004999
       vertices: []
       indices: 
@@ -228,19 +228,19 @@ TextureImporter:
       name: Arms_4
       rect:
         serializedVersion: 2
-        x: 170
-        y: 32
-        width: 30
-        height: 23
+        x: 320
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 11330db1bc1eba5e0800000000000000
+      spriteID: 7291c862ef6bfb89d9209c9df8273c6e
       internalID: -1897174555545292015
       vertices: []
       indices: 
@@ -250,86 +250,20 @@ TextureImporter:
       name: Arms_5
       rect:
         serializedVersion: 2
-        x: 199
-        y: 32
-        width: 30
-        height: 23
+        x: 400
+        y: 0
+        width: 80
+        height: 112
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: edc5a634844e4e1f0800000000000000
+      spriteID: 15a00c0a1f05da5c3bb75e45aac2f49a
       internalID: -1016436616859067170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arms_6
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 32
-        width: 53
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1093f0cbf01c0600800000000000000
-      internalID: 435741937408118811
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arms_7
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 23
-        width: 51
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 783cc9fd87237dd10800000000000000
-      internalID: 2150242841821758343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Arms_8
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 39
-        width: 61
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec171261f22273e00800000000000000
-      internalID: 1024325025880175054
       vertices: []
       indices: 
       edges: []
@@ -338,7 +272,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 836a39ba8a65dc194ba9f960587a4762
     internalID: 0
     vertices: []
     indices: 
@@ -346,7 +280,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":112.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Arms_0: 4278120580491971516
       Arms_1: 629924053708961409
@@ -354,9 +290,6 @@ TextureImporter:
       Arms_3: -157224434390004999
       Arms_4: -1897174555545292015
       Arms_5: -1016436616859067170
-      Arms_6: 435741937408118811
-      Arms_7: 2150242841821758343
-      Arms_8: 1024325025880175054
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UserNameEditor : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class UserNameEditor : MonoBehaviour
 
     void Start()
     {
-        current = DataManager.Instance.appData.user.username;
+        current = userDataManager.GetUserName();
         textDisplay.text = current;
 
         textInput.gameObject.SetActive(false);

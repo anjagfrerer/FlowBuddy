@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ca49713eda0cbb89c7b209e7d55ad2, type: 3}
+  m_Name: Happy
+  m_EditorClassIdentifier: Assembly-CSharp::DragonMoodSprites
+  eyes: {fileID: -4077014396740012951, guid: 3be62c079f0660b49b0e2a4a5d496ac8, type: 3}
+  snout: {fileID: 2116297899965731100, guid: aa8d207a64c77464b83f800e26044c2c, type: 3}
+  wings: {fileID: -6152695234932995532, guid: a065c2890b3358e45bcb5734e3847081, type: 3}

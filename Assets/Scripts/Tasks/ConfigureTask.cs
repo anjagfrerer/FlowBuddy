@@ -56,24 +56,26 @@ public class ConfigureTask : MonoBehaviour
 
     private bool AreFieldsValid(string newTitle, string description, string dueDate, string oldTitle = "")
     {
+        UIManager uIManager = FindAnyObjectByType<UIManager>();
+
         if (string.IsNullOrWhiteSpace(newTitle))
         {
             Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leerer Titel");
-            FindAnyObjectByType<UIManager>().ShowToast($"Empty title!");
+            uIManager.ShowToast($"Empty title!");
             return false;
         }
 
         if (string.IsNullOrWhiteSpace(description))
         {
             Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leere Beschreibung");
-            FindAnyObjectByType<UIManager>().ShowToast($"Empty description!");
+            uIManager.ShowToast($"Empty description!");
             return false;
         }
 
         if (string.IsNullOrWhiteSpace(dueDate))
         {
             Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leeres Datum");
-            FindAnyObjectByType<UIManager>().ShowToast($"Empty due date!");
+            uIManager.ShowToast($"Empty due date!");
             return false;
         }
 
@@ -84,7 +86,7 @@ public class ConfigureTask : MonoBehaviour
             if (exists)
             {
                 Debug.LogWarning($"Aufgabe '{newTitle}' existiert bereits");
-                FindAnyObjectByType<UIManager>().ShowToast($"Title already exists");
+                uIManager.ShowToast($"Title already exists");
                 return false;
             }
         }
@@ -94,6 +96,8 @@ public class ConfigureTask : MonoBehaviour
 
     public void saveTask()
     {
+        UIManager uIManager = FindAnyObjectByType<UIManager>();
+
         if(!AreFieldsValid(titleInput.text, descriptionInput.text, dueDateInput.text, isNew ? "" : task.title))
             return;
 
@@ -108,9 +112,9 @@ public class ConfigureTask : MonoBehaviour
         configureTaskPanel.SetActive(false);
 
         if (isNew)
-            FindAnyObjectByType<UIManager>().ShowToast($"{titleInput.text} added!");
+            uIManager.ShowToast($"{titleInput.text} added!");
         else
-            FindAnyObjectByType<UIManager>().ShowToast($"{titleInput.text} updated!");
+            uIManager.ShowToast($"{titleInput.text} updated!");
 
         FindAnyObjectByType<ListManager_TasksPage>().RefreshList();
         FindAnyObjectByType<TaskListLoader>().RefreshList();

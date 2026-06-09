@@ -33,6 +33,19 @@ public class LearningPackageMainScreen : MonoBehaviour
         RefreshUI();
     }
 
+    private void OnEnable()
+    {
+        RefreshUI();
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            RefreshUI();
+        }
+    }
+
     public void RefreshUI()
     {
         foreach (Transform child in taskContentArea) Destroy(child.gameObject);

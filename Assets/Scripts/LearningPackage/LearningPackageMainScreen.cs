@@ -25,22 +25,27 @@ public class LearningPackageMainScreen : MonoBehaviour
 
     private int totalTasksCount = 0;
     private int completedTasksCount = 0;
-    private List<Task> currentDailyTasks = new List<Task>(); // Wir merken uns die geladenen Tasks
+    private List<Task> currentDailyTasks = new List<Task>(); 
     private int currentPackageValue;
 
     void Start()
     {
+        StartCoroutine(WaitForDataManagerAndRefresh());
+    }
+
+    private System.Collections.IEnumerator WaitForDataManagerAndRefresh()
+    {
+        while (DataManager.Instance == null || DataManager.Instance.appData == null || DataManager.Instance.appData.tasks == null)
+        {
+            yield return null;
+        }
+
         RefreshUI();
     }
 
     private void OnEnable()
     {
-        RefreshUI();
-    }
-
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        if (hasFocus)
+        if (DataManager.Instance != null && DataManager.Instance.appData != null && DataManager.Instance.appData.tasks != null)
         {
             RefreshUI();
         }
@@ -48,13 +53,12 @@ public class LearningPackageMainScreen : MonoBehaviour
 
     public void RefreshUI()
     {
+        if (DataManager.Instance == null || DataManager.Instance.appData == null || DataManager.Instance.appData.tasks == null) 
+            return;
+
         foreach (Transform child in taskContentArea) Destroy(child.gameObject);
 
         currentDailyTasks = packageService.GenerateDailyPackage();
-
-        // Fügt einen StatusUpdateWert zur currentPackageValue hinzu
-        // @amecake: Wenn die Gamification ansteht, könnte dieser Teil der LerningPackage durch einen Geldwert ersetzt werden
-        //           Sodass das Füttern des Drachen die Tatsächliche Statusleiste ändert
         currentPackageValue = currentDailyTasks.Sum(t => t.estimatedEffort);
 
         totalTasksCount = currentDailyTasks.Count;
@@ -81,24 +85,15 @@ public class LearningPackageMainScreen : MonoBehaviour
 
     public void OnTaskStatusChangedInUI(bool isCompleted)
     {
-        if (isCompleted)
-        {
-            completedTasksCount++;
-        }
-        else
-        {
-            completedTasksCount--;
-        }
+        if (isCompleted) completedTasksCount++;
+        else completedTasksCount--;
 
         completedTasksCount = Mathf.Clamp(completedTasksCount, 0, totalTasksCount);
         UpdateProgressVisuals();
 
         if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
         {
-            /// Wenn die Learning Package fertig ist, wird die Value zur statusleiste hinzugefügt
-            /// @amecake: Beim shop hieße das nun, dass es zum geldwert hinzugefügt wird.
             StatusBarManager.OnStatusValueAdd(currentPackageValue);
-
             StartCoroutine(GenerateNextPackageRoutine());
         }
     }
@@ -141,5 +136,13 @@ public class LearningPackageMainScreen : MonoBehaviour
         float progress = (float)completedTasksCount / totalTasksCount;
         if (progressBar != null) progressBar.value = progress;
         if (progressText != null) progressText.text = $"{completedTasksCount}/{totalTasksCount}";
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            RefreshUI();
+        }
     }
 }

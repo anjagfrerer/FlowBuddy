@@ -30,7 +30,6 @@ public class DataManager : MonoBehaviour
     public void SaveData()
     {
         string json = JsonUtility.ToJson(appData, true);
-        Debug.Log(json);
         File.WriteAllText(filePath, json);
     }
 

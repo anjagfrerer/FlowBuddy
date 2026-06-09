@@ -4,5 +4,5 @@ public class User
 {
     public string username;
     public int energyLimit;
-    public int coins = 14;
+    public int coins;
 }

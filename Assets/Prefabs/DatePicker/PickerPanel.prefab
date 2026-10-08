@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4067669300070519262}
   - component: {fileID: 6963050996383997256}
   - component: {fileID: 7649805707094951096}
-  - component: {fileID: 4066354170948356852}
-  - component: {fileID: 5902538087836473454}
   m_Layer: 5
   m_Name: ClearButtonLabel
   m_TagString: Untagged
@@ -139,32 +137,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4066354170948356852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87250320459934757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
---- !u!114 &5902538087836473454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87250320459934757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
 --- !u!1 &552112176700561181
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,8 +577,6 @@ GameObject:
   - component: {fileID: 6488947147451926744}
   - component: {fileID: 1299037020263643080}
   - component: {fileID: 4476767313193082355}
-  - component: {fileID: 7890409439431980696}
-  - component: {fileID: 574767399933554685}
   m_Layer: 5
   m_Name: SaveButtonLabel
   m_TagString: Untagged
@@ -733,32 +703,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7890409439431980696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3880893003564091457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
---- !u!114 &574767399933554685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3880893003564091457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
 --- !u!1 &5332630155117845467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,8 +1129,6 @@ GameObject:
   - component: {fileID: 4719361516518072855}
   - component: {fileID: 725061752980517104}
   - component: {fileID: 1673608693057431319}
-  - component: {fileID: 5673844360644554684}
-  - component: {fileID: 879514869692599393}
   m_Layer: 5
   m_Name: CancelButtonLabel
   m_TagString: Untagged
@@ -1313,32 +1255,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5673844360644554684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6299246945991526842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
---- !u!114 &879514869692599393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6299246945991526842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
-  originalFontSize: 48
 --- !u!1 &6674475352798956880
 GameObject:
   m_ObjectHideFlags: 0

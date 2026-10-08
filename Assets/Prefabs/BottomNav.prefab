@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560163441850175183}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -63,14 +63,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,6 +134,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9165149951707364938}
     m_Modifications:
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7848220274735236099, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_Name
       value: HomeButton
@@ -221,8 +229,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1068636188911502835}
   m_SourcePrefab: {fileID: 100100000, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+--- !u!1 &3514279155276258073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+  m_PrefabInstance: {fileID: 2227475858625698507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1068636188911502835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3514279155276258073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextScaler
+  originalFontSize: 48
 --- !u!224 &7413668267811498098 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8650061931938968249, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
@@ -239,6 +268,14 @@ PrefabInstance:
     - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_text
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666349752566059211, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: nextScene
@@ -331,13 +368,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5300094027924343703}
   m_SourcePrefab: {fileID: 100100000, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
 --- !u!224 &3705335750631537168 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8650061931938968249, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
   m_PrefabInstance: {fileID: 5431567944338065577}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7299316284876048763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+  m_PrefabInstance: {fileID: 5431567944338065577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5300094027924343703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299316284876048763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextScaler
+  originalFontSize: 48
 --- !u!1001 &6777596725160296457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -348,7 +406,25 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: m_text
-      value: Subject
+      value: 'Subjects
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_overflowMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2652521069606736768, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7666349752566059211, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
       propertyPath: nextScene
@@ -441,10 +517,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5928197514258354883}
   m_SourcePrefab: {fileID: 100100000, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
 --- !u!224 &2739856741697991344 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8650061931938968249, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
   m_PrefabInstance: {fileID: 6777596725160296457}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8080147639127917019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3327226881130463698, guid: b8777d293008cf3c4ae5d082dfbe4824, type: 3}
+  m_PrefabInstance: {fileID: 6777596725160296457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5928197514258354883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080147639127917019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextScaler
+  originalFontSize: 48

@@ -8,15 +8,8 @@ public class SubjectListLoader : MonoBehaviour
     [SerializeField] private Transform content;
     [SerializeField] private GameObject subjectPrefab;
 
-    [Header("Navigation")]
-    [SerializeField] private SceneChanger sceneChanger;
-
     private void OnEnable()
 {
-    if (sceneChanger == null)
-    {
-        sceneChanger = Object.FindFirstObjectByType<SceneChanger>();
-    }
 
     Invoke(nameof(DelayedLoad), 0.02f);
 }
@@ -59,14 +52,10 @@ private void DelayedLoad()
             DataManager.Instance.selectedSubjectName = subjectName; // DataManager melden, welches Fach gewählt wurde
             DataManager.Instance.selectedSubjectId = subjectId;
             Debug.Log("Subject selected");
-            if (sceneChanger != null)
-            {
-                sceneChanger.Load(SceneID.TaskPage);
-            }
-            else
-            {
-                Debug.LogError("SceneChanger fehlt in der Szene!");
-            }
+
+
+            SceneChanger.Load(SceneID.TaskPage);
+
         });
     }
 

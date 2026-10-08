@@ -1,19 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public static class SceneChanger
 {
-    public SceneID nextScene;
-    public SceneDatabase Database;
-    public void Load(SceneID id)
-    {
-        string sceneName = Database.GetSceneName(id);
-        SceneManager.LoadScene(sceneName);
-    }
+    public static SceneDatabase Database;
+    public static SceneID currentScene;
 
-    public void loadNextScene()
+
+    // This attribute tells Unity to run this method automatically on game start
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void InitializeDatabase()
     {
-        string sceneName = Database.GetSceneName(nextScene);
+        // Automatically loads the asset from the Resources folder
+        Database = Resources.Load<SceneDatabase>("SceneDatabase");
+
+        if (Database == null)
+        {
+            Debug.LogError("SceneChanger failed to initialize! 'SceneDatabase' asset not found in Resources folder.");
+        }
+    }
+    public static void Load(SceneID id)
+    {
+        if(Database == null)
+            return;
+        currentScene = id;
+        string sceneName = Database.GetSceneName(id);
         SceneManager.LoadScene(sceneName);
     }
 }

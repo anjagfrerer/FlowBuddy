@@ -22,5 +22,6 @@ public class NameChecker : MonoBehaviour
     public void SaveInput()
     {
         userDataManager.setUserName(nameInput.text);
+        SceneChanger.Load(SceneID.FirstSubject);
     }
 }

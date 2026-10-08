@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scene Management/Scene Database")]
+[CreateAssetMenu(fileName = "SceneDatabase",menuName = "Scene Management/Scene Database")]
 public class SceneDatabase : ScriptableObject
 {
     [System.Serializable]

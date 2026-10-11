@@ -12,16 +12,19 @@ public class Navigation_bar_button : MonoBehaviour
 
     void Start()
     {
-        selectionOverlay.gameObject.SetActive(false);
+        if(SceneChanger.currentScene != scene_to_navigate)
+            Select(false);
+        else
+            Select(true);
+
     }
     public void OnClick()
     {
         if(!selectionOverlay.isActiveAndEnabled)
         {
-            print(name + ": Clicked");
-            navigation_Bar.Select(this);  
+            SceneChanger.Load(scene_to_navigate); 
         }
     }
 
-    public void Select(bool select) => selectionOverlay.gameObject.SetActive(select);
+    void Select(bool select) => selectionOverlay.gameObject.SetActive(select);
 }

@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: ea6a2f43e2390fb6aafd680238fd6dc7
+guid: 8034ab79e8ac809578914d441409a7db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1413713103915997892
-    second: Store_0
+      213: 5265169172871806943
+    second: Volume_Up_0
   - first:
-      213: 3806579154678521897
-    second: Store_1
+      213: -861538279951849716
+    second: Volume_Up_1
   - first:
-      213: 8191850876784813077
-    second: Store_2
+      213: -6995797426660317597
+    second: Volume_Up_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -119,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Store_0
+      name: Volume_Up_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5
-        width: 24
-        height: 19
+        x: 47
+        y: 51
+        width: 52
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c35a5c21c6b716ce0800000000000000
-      internalID: -1413713103915997892
+      spriteID: fdf7c577773a11940800000000000000
+      internalID: 5265169172871806943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Store_1
+      name: Volume_Up_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 0
-        width: 7
-        height: 6
+        x: 105
+        y: 71
+        width: 19
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9202504b29fa3d430800000000000000
-      internalID: 3806579154678521897
+      spriteID: c07a11fbf733b04f0800000000000000
+      internalID: -861538279951849716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Store_2
+      name: Volume_Up_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 7
-        height: 6
+        x: 108
+        y: 47
+        width: 41
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5142bbb58fc4fa170800000000000000
-      internalID: 8191850876784813077
+      spriteID: 366e1574e4fe9ee90800000000000000
+      internalID: -6995797426660317597
       vertices: []
       indices: 
       edges: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Store_0: -1413713103915997892
-      Store_1: 3806579154678521897
-      Store_2: 8191850876784813077
+      Volume_Up_0: 5265169172871806943
+      Volume_Up_1: -861538279951849716
+      Volume_Up_2: -6995797426660317597
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

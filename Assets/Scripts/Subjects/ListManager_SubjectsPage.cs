@@ -120,7 +120,6 @@ public class ListManager_SubjectsPage : MonoBehaviour
                 if (item.toggle.isOn)
                 {
                     i++;
-                    Destroy(item);
                     DataManager.Instance.DeleteSubject(item.tMP_Text.text);
                     Debug.Log(name + ": Subject " + item.name + " deleted!");
                 }
@@ -140,7 +139,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
             {
                 DataManager.Instance.DeleteSubject(subjectName);
                 items.Remove(item);
-                Destroy(item);
+                Destroy(item.gameObject);
                 uIManager.ShowToast($"{subjectName} deleted!");
             });
         }
@@ -148,11 +147,12 @@ public class ListManager_SubjectsPage : MonoBehaviour
         {
             Debug.LogError("UIManager wurde in der Szene nicht gefunden!");
         }
+        
     }
 
     private void RefreshList()
     {
-        foreach (var item in items) Destroy(item);
+        foreach (var item in items) Destroy(item.gameObject);
         items.Clear();
 
         foreach (var subject in DataManager.Instance.appData.subjects)

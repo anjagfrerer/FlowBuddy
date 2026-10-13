@@ -5,18 +5,26 @@ using UnityEngine.UI;
 
 public class ListManager_SubjectsPage : MonoBehaviour
 {
-    
+
+
+    UIManager uIManager;
+
     [Header("UI References")]
-    public TMP_InputField inputField;
-    public Button addButton;
-    public Transform content;
-    public GameObject listItemPrefab;
+    [SerializeField]
+    TMP_InputField inputField;
 
-    [Header("Icons for Edit/Save")]
-    public Sprite editIcon;
-    public Sprite saveIcon;
+    [SerializeField]
+    Button addButton;
+    [SerializeField]
+    Transform content;
+    [SerializeField]
+    GameObject listItemPrefab;
 
-    private List<GameObject> items = new List<GameObject>();
+    [Header("Select All")]
+    [SerializeField] Toggle selectAllToggle;
+    bool selectAll = false;
+
+    private readonly List<ListItemSubjectEdit> items = new();
 
     private void Start()
     {
@@ -24,6 +32,12 @@ public class ListManager_SubjectsPage : MonoBehaviour
             addButton.onClick.AddListener(OnAddButtonClicked);
 
         RefreshList();
+
+        if (uIManager == null)
+        {
+            uIManager = FindAnyObjectByType<UIManager>();
+        }
+
     }
 
     private void OnAddButtonClicked()
@@ -36,35 +50,35 @@ public class ListManager_SubjectsPage : MonoBehaviour
         DataManager.Instance.AddSubject(subjectName);
         AddListItem(subjectName);
         inputField.text = "";
-        FindObjectOfType<UIManager>().ShowToast($"{subjectName} added!");
+        uIManager.ShowToast($"{subjectName} added!");
     }
 
     private void AddListItem(string subjectName)
     {
-        GameObject newItem = Instantiate(listItemPrefab, content);
+        ListItemSubjectEdit newItem = Instantiate(listItemPrefab, content).GetComponent<ListItemSubjectEdit>();
 
-        TMP_Text textComponent = newItem.transform.Find("Text").GetComponent<TMP_Text>();
-        TMP_InputField editInput = newItem.transform.Find("EditInput").GetComponent<TMP_InputField>();
-        Button editButton = newItem.transform.Find("EditButton").GetComponent<Button>();
-        Button deleteButton = newItem.transform.Find("DeleteButton").GetComponent<Button>();
+        TMP_Text textComponent = newItem.tMP_Text;
+        TMP_InputField editInput = newItem.tMP_InputField;
+        Button editButton = newItem.editButton;
+        Button deleteButton = newItem.deleteButton;
 
+        newItem.toggle.isOn = false;
         textComponent.text = subjectName;
         editInput.gameObject.SetActive(false);
 
         deleteButton.onClick.AddListener(() => OnDeleteButtonClicked(newItem, textComponent.text));
-        editButton.onClick.AddListener(() => OnEditButtonClicked(newItem, textComponent, editInput, editButton));
+        editButton.onClick.AddListener(() => OnEditButtonClicked(textComponent, editInput, editButton));
 
         items.Add(newItem);
     }
 
-    private void OnEditButtonClicked(GameObject item, TMP_Text textComp, TMP_InputField inputComp, Button btn)
+    private void OnEditButtonClicked(TMP_Text textComp, TMP_InputField inputComp, Button btn)
     {
         if (!inputComp.gameObject.activeSelf)
         {
             textComp.gameObject.SetActive(false);
             inputComp.gameObject.SetActive(true);
             inputComp.text = textComp.text;
-            btn.image.sprite = saveIcon;
             inputComp.ActivateInputField();
         }
         else
@@ -80,28 +94,54 @@ public class ListManager_SubjectsPage : MonoBehaviour
 
                     textComp.text = newName;
 
-                    UIManager ui = Object.FindFirstObjectByType<UIManager>();
-                    if (ui != null) ui.ShowToast($"Subject renamed to {newName}!");
+                    if (uIManager != null) uIManager.ShowToast($"Subject renamed to {newName}!");
                 }
 
                 textComp.gameObject.SetActive(true);
                 inputComp.gameObject.SetActive(false);
-                btn.image.sprite = editIcon;
             }
         }
     }
 
-    private void OnDeleteButtonClicked(GameObject item, string subjectName)
+    public void SelectAll()
     {
-        UIManager ui = FindObjectOfType<UIManager>();
+        selectAll = !selectAll;
+        selectAllToggle.isOn = selectAll;
+        items.ForEach(item => item.toggle.isOn = selectAll);
+    }
 
-        if (ui != null)
+    public void DeleteAllChecked()
+    {
+        uIManager.RequestConfirmation(() =>
         {
-            ui.RequestConfirmation(() => {
+            var i = 0;
+            foreach (var item in items)
+            {
+                if (item.toggle.isOn)
+                {
+                    i++;
+                    Destroy(item);
+                    DataManager.Instance.DeleteSubject(item.tMP_Text.text);
+                    Debug.Log(name + ": Subject " + item.name + " deleted!");
+                }
+
+            }
+            RefreshList();
+            uIManager.ShowToast($"{i} subjects deleted!");
+        });
+    }
+
+    private void OnDeleteButtonClicked(ListItemSubjectEdit item, string subjectName)
+    {
+
+        if (uIManager != null)
+        {
+            uIManager.RequestConfirmation(() =>
+            {
                 DataManager.Instance.DeleteSubject(subjectName);
                 items.Remove(item);
                 Destroy(item);
-                FindObjectOfType<UIManager>().ShowToast($"{subjectName} deleted!");
+                uIManager.ShowToast($"{subjectName} deleted!");
             });
         }
         else
@@ -112,7 +152,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
 
     private void RefreshList()
     {
-        foreach (GameObject item in items) Destroy(item);
+        foreach (var item in items) Destroy(item);
         items.Clear();
 
         foreach (var subject in DataManager.Instance.appData.subjects)
@@ -126,7 +166,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
         if (string.IsNullOrWhiteSpace(newName))
         {
             Debug.LogWarning("Fach konnte nicht erstellt werden: Leerer Name");
-            FindObjectOfType<UIManager>().ShowToast($"Empty name!");
+            uIManager.ShowToast($"Empty name!");
             return false;
         }
 
@@ -137,7 +177,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
             if (exists)
             {
                 Debug.LogWarning($"Fach '{newName}' existiert bereits");
-                FindObjectOfType<UIManager>().ShowToast($"Name already exists");
+                uIManager.ShowToast($"Name already exists");
                 return false;
             }
         }

@@ -6,14 +6,18 @@ public class SliderTextValueConnector : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] TMP_Text tMP_Text;
+    [Tooltip("Zeigt beim Aufwands-Slider zusätzlich ein Wort, z.B. \"3 (Medium)\"")]
+    [SerializeField] bool showEffortLabel = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       tMP_Text.text = slider.value.ToString(); 
+        UpdateText();
     }
 
     public void UpdateText()
     {
-        tMP_Text.text = slider.value.ToString(); 
+        int value = (int)slider.value;
+        tMP_Text.text = showEffortLabel ? $"{value} ({EnergyBudget.EffortLabel(value)})" : slider.value.ToString();
     }
 }

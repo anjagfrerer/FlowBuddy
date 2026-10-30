@@ -73,6 +73,13 @@ public class DragonSatisfactionManager : MonoBehaviour
 
             if (totalHoursPassed > 0)
             {
+                // Spoon Theory: ohne Energie (Ruhetag oder aufgebraucht) wird der Drache nicht unzufrieden
+                if (EnergyBudget.IsResting)
+                {
+                    Debug.Log("Offline Catchup: Ruhetag bzw. keine Energie mehr, der Drache verliert keine Zufriedenheit.");
+                    return;
+                }
+
                 float satisfactionToDeduct = totalHoursPassed * satisfactionLossPerHour;
                 
                 currentSatisfaction = Mathf.Clamp01(currentSatisfaction - satisfactionToDeduct);
@@ -135,6 +142,12 @@ public class DragonSatisfactionManager : MonoBehaviour
             PlayerPrefs.Save();
 
             if (NotificationSettingsManager.Instance != null && !NotificationSettingsManager.Instance.AreNotificationsEnabled())
+            {
+                return;
+            }
+
+            // Kein "Dein Drache vermisst dich" an Ruhetagen oder ohne Energie
+            if (EnergyBudget.IsResting)
             {
                 return;
             }

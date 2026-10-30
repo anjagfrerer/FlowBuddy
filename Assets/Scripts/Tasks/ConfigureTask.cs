@@ -15,6 +15,16 @@ public class ConfigureTask : MonoBehaviour
 
     private bool isNew = false;
 
+    private const int DefaultEffort = 3; // "Medium"
+
+    // Aufwand in Löffeln statt Minuten (Spoon Theory)
+    private void SetupEffortSlider()
+    {
+        effortInput.minValue = EnergyBudget.MinEffort;
+        effortInput.maxValue = EnergyBudget.MaxEffort;
+        effortInput.wholeNumbers = true;
+    }
+
     public void OpenForCreate()
     {
         Initialize(null);
@@ -22,6 +32,8 @@ public class ConfigureTask : MonoBehaviour
 
     public void Initialize(Task existingTask)
     {
+        SetupEffortSlider();
+
         // Create new task
         if (existingTask == null)
         {
@@ -38,7 +50,7 @@ public class ConfigureTask : MonoBehaviour
             titleInput.text = "";
             descriptionInput.text = "";
             dueDateInput.text = "";
-            effortInput.value = 30;
+            effortInput.value = DefaultEffort;
             
         } else
         {
@@ -101,14 +113,17 @@ public class ConfigureTask : MonoBehaviour
         if(!AreFieldsValid(titleInput.text, descriptionInput.text, dueDateInput.text, isNew ? "" : task.title))
             return;
 
+        int oldEffort = task.estimatedEffort;
         setFields();
 
         if (isNew)
             taskDataManager.CreateTask(task);
         else
+        {
             taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString, task.estimatedEffort, task.isDone);
-            // Effort and done missing
-            
+            EnergyBudget.RegisterEffortChange(task, oldEffort);
+        }
+
         configureTaskPanel.SetActive(false);
 
         if (isNew)

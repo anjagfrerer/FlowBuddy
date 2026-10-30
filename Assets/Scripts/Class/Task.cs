@@ -8,7 +8,8 @@ public class Task
     public string dueDateString;
 
     // von Anja hinzugefügt:
-    public int estimatedEffort; // Aufwand in Minuten
+    public int estimatedEffort; // Energieaufwand in Löffeln (1-5)
     public long dueDateTicks;   // sortieren nach Datum
     public bool isDone;
+    public string completedDate; // yyyy-MM-dd, für den heutigen Energieverbrauch
 }

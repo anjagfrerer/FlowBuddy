@@ -56,7 +56,13 @@ public class TickableTaskItem : MonoBehaviour
         
         if (currentTask != null)
         {
+            bool statusChanged = currentTask.isDone != isOn;
             currentTask.isDone = isOn;
+
+            if (statusChanged)
+            {
+                EnergyBudget.RegisterCompletion(currentTask, isOn);
+            }
 
             if (isOn)
             {

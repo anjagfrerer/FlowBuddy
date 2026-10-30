@@ -2,29 +2,16 @@ using UnityEngine;
 
 public class UserDataManager : MonoBehaviour
 {
-    private User user = new User();
-
+    // Ändert den bestehenden User, statt ihn zu ersetzen (sonst gehen Münzen und Energie verloren)
     public void setUserName(string name)
     {
-        user.username = name;
-        UpdateAppdata();
+        DataManager.Instance.appData.user.username = name;
+        DataManager.Instance.SaveData();
     }
 
     public string GetUserName() => DataManager.Instance.appData.user.username;
 
-    public void SetEnergyLevel(int level)
-    {
-        user.energyLimit = level;
-        UpdateAppdata();
-    }
+    public void SetEnergyLevel(int level) => EnergyBudget.SetBaseline(level);
 
-    public int GetEnergyLevel() => DataManager.Instance.appData.user.energyLimit;
-
-    void UpdateAppdata()
-    {
-        DataManager.Instance.appData.user = user;
-        DataManager.Instance.SaveData();
-    }
-
-
+    public int GetEnergyLevel() => EnergyBudget.Baseline;
 }

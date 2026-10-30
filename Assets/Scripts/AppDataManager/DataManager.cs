@@ -45,6 +45,9 @@ public class DataManager : MonoBehaviour
             appData = new AppData();
         }
 
+        if (EnergyBudget.MigrateIfNeeded(appData))
+            SaveData();
+
         if (DataManager.Instance == null)
             Debug.LogError("No datamanager instance found");
 

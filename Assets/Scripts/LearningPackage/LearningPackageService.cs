@@ -4,30 +4,37 @@ using UnityEngine;
 
 public class LearningPackageService : MonoBehaviour
 {
+    // Paket = heute erledigte Aufgaben + offene Aufgaben, die in die restliche Tagesenergie passen
     public List<Task> GenerateDailyPackage()
     {
         var allTasks = DataManager.Instance.appData.tasks;
-        
-        int energyLimit = PlayerPrefs.GetInt("User_Selected_EnergyLimit", 60);
-        Debug.Log($"[Service] Berechne Paket mit einem Limit von: {energyLimit} Minuten.");
+        string today = EnergyBudget.Today;
+        int todayBudget = EnergyBudget.TodayBudget;
+        int remaining = EnergyBudget.Remaining;
+        Debug.Log($"[Service] Berechne Paket: {remaining} von {todayBudget} Löffeln übrig.");
 
-        var prioritizedTasks = allTasks
-            .OrderBy(t => t.dueDateTicks) 
-            .ThenBy(t => t.estimatedEffort) 
+        List<Task> package = allTasks
+            .Where(t => t.isDone && t.completedDate == today)
             .ToList();
 
-        List<Task> package = new List<Task>();
+        var prioritizedTasks = allTasks
+            .Where(t => !t.isDone)
+            .OrderBy(t => t.dueDateTicks)
+            .ThenBy(t => t.estimatedEffort)
+            .ToList();
+
         int currentEffortSum = 0;
 
         foreach (var task in prioritizedTasks)
         {
-            if (currentEffortSum + task.estimatedEffort <= energyLimit)
+            if (currentEffortSum + task.estimatedEffort <= remaining)
             {
                 package.Add(task);
                 currentEffortSum += task.estimatedEffort;
             }
-            else if (package.Count == 0 && task.estimatedEffort > energyLimit)
+            else if (package.Count == 0 && remaining == todayBudget && todayBudget > 0 && task.estimatedEffort > todayBudget)
             {
+                // Größer als das ganze Tageslimit: als Solo-Paket statt überspringen
                 package.Add(task);
                 break;
             }

@@ -27,6 +27,7 @@ public class LearningPackageMainScreen : MonoBehaviour
     private int completedTasksCount = 0;
     private List<Task> currentDailyTasks = new List<Task>(); 
     private int currentPackageValue;
+    private bool isCompletingPackage = false;
 
     void Start()
     {
@@ -45,10 +46,43 @@ public class LearningPackageMainScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        EnergyBudget.OnBudgetChanged += OnBudgetChanged;
+        isCompletingPackage = false; // Coroutine bricht beim Deaktivieren ab
+
         if (DataManager.Instance != null && DataManager.Instance.appData != null && DataManager.Instance.appData.tasks != null)
         {
             RefreshUI();
         }
+    }
+
+    private void OnDisable()
+    {
+        EnergyBudget.OnBudgetChanged -= OnBudgetChanged;
+    }
+
+    // Tagesenergie geändert (z.B. "Rest"): Erledigtes still verbuchen, statt das Paket als fertig zu feiern
+    private void OnBudgetChanged()
+    {
+        // Ein laufender Abschluss baut das Paket danach ohnehin mit dem neuen Budget neu
+        if (isCompletingPackage) return;
+
+        SettleCompletedTasks();
+        RefreshUI();
+    }
+
+    private void SettleCompletedTasks()
+    {
+        List<Task> doneTasks = currentDailyTasks.Where(t => t.isDone).ToList();
+        if (doneTasks.Count == 0) return;
+
+        StatusBarManager.OnStatusValueAdd(doneTasks.Sum(t => t.estimatedEffort) * EnergyBudget.StatusPointsPerSpoon);
+
+        foreach (Task doneTask in doneTasks)
+        {
+            DataManager.Instance.appData.tasks.Remove(doneTask);
+        }
+
+        DataManager.Instance.SaveData();
     }
 
     public void RefreshUI()
@@ -81,6 +115,12 @@ public class LearningPackageMainScreen : MonoBehaviour
                 uiItem.Setup(t, this);
             }
         }
+
+        // Nach Änderung der Tagesenergie kann das Paket nur noch aus erledigten Aufgaben bestehen
+        if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
+        {
+            CompletePackage();
+        }
     }
 
     public void OnTaskStatusChangedInUI(bool isCompleted)
@@ -93,13 +133,24 @@ public class LearningPackageMainScreen : MonoBehaviour
 
         if (totalTasksCount > 0 && completedTasksCount == totalTasksCount)
         {
-            StatusBarManager.OnStatusValueAdd(currentPackageValue);
-            StartCoroutine(GenerateNextPackageRoutine());
+            CompletePackage();
         }
+    }
+
+    private void CompletePackage()
+    {
+        if (isCompletingPackage) return;
+        isCompletingPackage = true;
+
+        StartCoroutine(GenerateNextPackageRoutine());
     }
 
     private System.Collections.IEnumerator GenerateNextPackageRoutine()
     {
+        // Merken, welches Paket abgeschlossen wurde; RefreshUI kann currentDailyTasks inzwischen ersetzen
+        List<Task> finishedPackage = currentDailyTasks;
+        int finishedPackageValue = currentPackageValue;
+
         yield return new WaitForSeconds(0.4f);
 
         if (toastWindow != null)
@@ -111,7 +162,10 @@ public class LearningPackageMainScreen : MonoBehaviour
 
         Debug.Log("Preparing new learning package...");
 
-        foreach (var completedTask in currentDailyTasks)
+        // Belohnung und Entfernen zusammen, damit ein abgebrochener Ablauf nichts doppelt vergibt
+        StatusBarManager.OnStatusValueAdd(finishedPackageValue * EnergyBudget.StatusPointsPerSpoon);
+
+        foreach (var completedTask in finishedPackage)
         {
             if (!completedTask.isDone)
             {
@@ -121,7 +175,13 @@ public class LearningPackageMainScreen : MonoBehaviour
         }
         
         DataManager.Instance.SaveData();
+        isCompletingPackage = false;
         RefreshUI();
+
+        if (currentDailyTasks.Count == 0 && EnergyBudget.Remaining == 0 && toastWindow != null)
+        {
+            toastWindow.ShowToast("You used today's energy. Time to rest!", 3.0f);
+        }
     }
 
     private void UpdateProgressVisuals()

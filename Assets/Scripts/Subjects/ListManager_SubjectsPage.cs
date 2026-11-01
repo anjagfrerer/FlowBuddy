@@ -62,7 +62,8 @@ public class ListManager_SubjectsPage : MonoBehaviour
         Button editButton = newItem.editButton;
         Button deleteButton = newItem.deleteButton;
 
-        newItem.toggle.isOn = false;
+        if(newItem.toggle)
+            newItem.toggle.isOn = false;
         textComponent.text = subjectName;
         editInput.gameObject.SetActive(false);
 

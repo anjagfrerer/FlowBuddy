@@ -50,7 +50,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowMainPanel()
     {
-        addSubjectPanel.SetActive(false);
+        if(addSubjectPanel)
+            addSubjectPanel.SetActive(false);
         confirmDeleteCard.SetActive(false);
         mainPanel.SetActive(true);
     }

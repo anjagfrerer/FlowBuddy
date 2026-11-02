@@ -3,9 +3,10 @@ using UnityEngine;
 public class SceneChangerActivator : MonoBehaviour
 {
     [SerializeField]
-    SceneID next_scene;
+    SceneID nextScene = SceneID.MainPage;
     public void Load()
     {
-        SceneChanger.Load(next_scene);
+        Debug.Log(name+": Loading Scene " + nextScene);
+        SceneChanger.Load(nextScene);
     }
 }

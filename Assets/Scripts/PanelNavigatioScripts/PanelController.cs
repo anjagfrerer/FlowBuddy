@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEditor.UI;
 
 /// <summary>
 /// The Panel Controller is the main controller for opening and closing Panels
@@ -11,6 +12,8 @@ public class PanelController : MonoBehaviour
 {
     private Dictionary<string, Panel> panelLookup = new();
 
+    [SerializeField]
+    string InitPanelId = null;
     /*
     The component stores all Child-Panels in a Dictionary
     */
@@ -18,11 +21,20 @@ public class PanelController : MonoBehaviour
     {
         var panels = GetComponentsInChildren<Panel>(true); // true = include inactive
 
-        if(panels == null) Debug.LogWarning("No Panels detected!");
+        if (panels == null) Debug.LogWarning("No Panels detected!");
 
         foreach (var panel in panels)
         {
             AddPanel(panel);
+
+            if (!string.IsNullOrEmpty(InitPanelId) && panel.Id != InitPanelId)
+            {
+                panel.gameObject.SetActive(false);
+            }
+            else
+            {
+                panel.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -31,12 +43,14 @@ public class PanelController : MonoBehaviour
     */
     private void AddPanel(Panel panel)
     {
-        if (!panelLookup.ContainsKey(panel.id)){
-            panelLookup.Add(panel.id, panel);
-            Debug.Log($"Added: {panel.id}");
+        panel.panelController = this;
+        if (!panelLookup.ContainsKey(panel.Id))
+        {
+            panelLookup.Add(panel.Id, panel);
+            Debug.Log($"Added: {panel.Id}");
         }
         else
-            Debug.LogWarning($"Duplicate panel ID detected: '{panel.id}'!");
+            Debug.LogError($"{name}: Duplicate panel ID detected: '{panel.Id}'!");
     }
 
     /// <summary>
@@ -50,6 +64,11 @@ public class PanelController : MonoBehaviour
     /// <param name="id"></param>
     public void ShowPanel(string id)
     {
+        if(string.IsNullOrEmpty(id)){
+            panelLookup[InitPanelId].gameObject.SetActive(true);
+            return;    
+        }
+
         if (!panelLookup.ContainsKey(id))
         {
             Debug.LogError($"PanelController: Unknown panel id '{id}'");

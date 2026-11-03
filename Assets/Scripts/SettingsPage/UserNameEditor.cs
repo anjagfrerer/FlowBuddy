@@ -13,22 +13,18 @@ public class UserNameEditor : MonoBehaviour
     {
         current = userDataManager.GetUserName();
         textDisplay.text = current;
-
-        textInput.gameObject.SetActive(false);
     }
 
     public void Editing()
     {
         textInput.text = current;
         textDisplay.gameObject.SetActive(false);
-        textInput.gameObject.SetActive(true);
         textInput.Select();
         textInput.ActivateInputField();
     }
 
     public void CancelEditing()
     {
-        textInput.gameObject.SetActive(false);
         textDisplay.gameObject.SetActive(true);
     }
 
@@ -37,7 +33,6 @@ public class UserNameEditor : MonoBehaviour
         current = textInput.text;
         textDisplay.text = current;
 
-        textInput.gameObject.SetActive(false);
         textDisplay.gameObject.SetActive(true);
 
         userDataManager.setUserName(current);

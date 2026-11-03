@@ -25,6 +25,7 @@ public static class SceneChanger
             return;
         currentScene = id;
         string sceneName = Database.GetSceneName(id);
+        Debug.Log("Scene Changer: Loading Scene "+sceneName);
         SceneManager.LoadScene(sceneName);
     }
 }

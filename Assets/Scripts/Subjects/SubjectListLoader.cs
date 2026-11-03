@@ -41,7 +41,7 @@ private void DelayedLoad()
     {
         GameObject buttonObj = Instantiate(subjectPrefab, content);
 
-        TMP_Text text = buttonObj.transform.Find("Text").GetComponent<TMP_Text>();
+        TMP_Text text = buttonObj.transform.Find("Content").GetComponentInChildren<TMP_Text>();
         text.text = subjectName;
 
         Button button = buttonObj.GetComponent<Button>();

@@ -1,3 +1,4 @@
+using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -7,5 +8,23 @@ using UnityEngine;
 /// </summary>
 public class Panel : MonoBehaviour
 {
-    public string id;
+    public string Id;
+
+    [NonSerialized]
+    public PanelController panelController;
+
+    /// <summary>
+    /// Deactivates the Panel by Calling the panelController
+    /// </summary>
+    public void ClosePanel()
+    {
+        panelController.ShowPanel("");
+        panelController.ClosePanelByID(Id);
+    }
+
+    public void SwitchToPanel(string id)
+    {
+        panelController.ShowPanel(id);
+        panelController.ClosePanelByID(Id);
+    }
 }

@@ -16,7 +16,7 @@ public class ClosePanelScript : MonoBehaviour
     /// </summary>
     public void CloseOwnPanel()
     {
-        controller.ClosePanelByID(GetComponentInParent<Panel>().id);
+        controller.ClosePanelByID(GetComponentInParent<Panel>().Id);
     }
 
     /// <summary>

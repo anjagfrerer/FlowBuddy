@@ -125,12 +125,12 @@ TextureImporter:
       name: Notifications_0
       rect:
         serializedVersion: 2
-        x: 51
-        y: 105
-        width: 25
-        height: 37
+        x: 50
+        y: 45
+        width: 91
+        height: 103
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,77 +143,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Notifications_1
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 61
-        width: 82
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9510b5fa3ad3aaa0800000000000000
-      internalID: -6150832719293049442
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Notifications_2
-      rect:
-        serializedVersion: 2
-        x: 116
-        y: 105
-        width: 25
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c4860a1dc3540ced0800000000000000
-      internalID: -2395838874243798964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Notifications_3
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 47
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0bb32ddd7b0bf2c0800000000000000
-      internalID: -4396907975988233457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 689ff2acd0662ebdfa3f053a132b83cc
     internalID: 0
     vertices: []
     indices: 
@@ -221,12 +155,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":192.0,"y":192.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Notifications_0: 8176467143908592943
-      Notifications_1: -6150832719293049442
-      Notifications_2: -2395838874243798964
-      Notifications_3: -4396907975988233457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

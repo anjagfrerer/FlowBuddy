@@ -430,8 +430,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 72
@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 387699638}
   - component: {fileID: 387699640}
   - component: {fileID: 387699639}
+  - component: {fileID: 7380710773832280151}
   m_Layer: 5
   m_Name: DescText
   m_TagString: Untagged
@@ -694,6 +695,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7380710773832280151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387699637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 48
 --- !u!224 &387699638
 RectTransform:
   m_ObjectHideFlags: 0
@@ -760,12 +774,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 36
-  m_fontSizeMax: 36
+  m_fontSizeMin: 37
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -829,6 +843,7 @@ GameObject:
   - component: {fileID: 433861789}
   - component: {fileID: 433861791}
   - component: {fileID: 433861790}
+  - component: {fileID: 6993394734968036127}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -836,6 +851,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6993394734968036127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433861788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 48
 --- !u!224 &433861789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -902,12 +930,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 48
-  m_fontSizeMax: 48
+  m_fontSizeMin: 37
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1280,6 +1308,7 @@ GameObject:
   - component: {fileID: 725888192}
   - component: {fileID: 725888194}
   - component: {fileID: 725888193}
+  - component: {fileID: 1449840834009032912}
   m_Layer: 5
   m_Name: DeleteText
   m_TagString: Untagged
@@ -1287,6 +1316,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1449840834009032912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725888191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 48
 --- !u!224 &725888192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1353,12 +1395,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 36
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 48
-  m_fontSizeMax: 48
+  m_fontSizeMin: 37
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -2892,6 +2934,7 @@ GameObject:
   - component: {fileID: 1407721363}
   - component: {fileID: 1407721362}
   - component: {fileID: 1407721361}
+  - component: {fileID: 7624308586971660152}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2899,6 +2942,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7624308586971660152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407721360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 48
 --- !u!114 &1407721361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2946,12 +3002,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 48
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 36
-  m_fontSizeMax: 36
+  m_fontSizeMin: 37
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -3045,6 +3101,7 @@ GameObject:
   - component: {fileID: 1432512216}
   - component: {fileID: 1432512218}
   - component: {fileID: 1432512217}
+  - component: {fileID: 7171451976648491323}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -3052,6 +3109,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7171451976648491323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432512215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 48
 --- !u!224 &1432512216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3118,12 +3188,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 24
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 48
-  m_fontSizeMax: 48
+  m_fontSizeMin: 37
+  m_fontSizeMax: 42
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -4165,6 +4235,7 @@ GameObject:
   - component: {fileID: 1826828706}
   - component: {fileID: 1826828705}
   - component: {fileID: 1826828704}
+  - component: {fileID: 6290261461277573348}
   m_Layer: 5
   m_Name: WelcomeText
   m_TagString: Untagged
@@ -4172,6 +4243,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6290261461277573348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826828702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 56
 --- !u!224 &1826828703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4251,12 +4335,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 49
+  m_fontSizeBase: 49
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 64
-  m_fontSizeMax: 72
+  m_fontSizeMin: 43.17
+  m_fontSizeMax: 49
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

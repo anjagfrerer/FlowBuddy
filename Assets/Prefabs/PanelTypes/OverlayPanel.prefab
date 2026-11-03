@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9160816155132286339}
   - component: {fileID: 5310151498843553473}
   - component: {fileID: 1282704334545827516}
+  - component: {fileID: 5132424546405472637}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -18,6 +19,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5132424546405472637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477968006595079886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b6eb8a8047b474d82625c07a75da7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicTextFontScaler
+  originalFontSize: 56
 --- !u!224 &9160816155132286339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -92,12 +106,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 36
+  m_fontSize: 49
+  m_fontSizeBase: 49
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 150
+  m_fontSizeMin: 43.17
+  m_fontSizeMax: 49
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

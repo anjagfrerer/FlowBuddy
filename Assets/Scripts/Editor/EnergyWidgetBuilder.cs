@@ -14,7 +14,7 @@ public static class EnergyWidgetBuilder
     // Wie "Satisfaction:" auf der MainPage
     private const float LabelSize = 48f;
     private const float TextSize = 36f;
-    private const float HintSize = 30f;
+    private const float HintSize = 48f; // Fließtextgröße, kleiner wäre unter 16 sp
     private const float CharacterSpacing = -5f;
     private const float Spacing = 8f;
     private const float BarHeight = 24f;
@@ -105,6 +105,7 @@ public static class EnergyWidgetBuilder
         fillRect.offsetMax = Vector2.zero;
 
         TMP_Text hintText = NewText("HintText", root.transform, "How much energy do you have today?", HintSize, font, FontStyles.Normal);
+        hintText.alignment = TextAlignmentOptions.Left;
 
         GameObject row = NewUI("ModeButtons", root.transform);
         HorizontalLayoutGroup rowLayout = row.AddComponent<HorizontalLayoutGroup>();

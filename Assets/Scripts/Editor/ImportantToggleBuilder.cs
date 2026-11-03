@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public static class ImportantToggleBuilder
 {
     private const float LabelSize = 48f;
-    private const float HintSize = 30f;
+    private const float HintSize = 48f; // Fließtextgröße, kleiner wäre unter 16 sp
     private const float CharacterSpacing = -5f;
     // Ganze Zeile ist Tippfläche, mind. 48x48 dp (wie Energy Widget: 100 + 2 * 22)
     private const float RowHeight = 144f;

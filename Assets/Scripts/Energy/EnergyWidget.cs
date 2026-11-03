@@ -15,8 +15,11 @@ public class EnergyWidget : MonoBehaviour
 
     [Header("Tagesauswahl (Reihenfolge: Rest, Low, Normal, High)")]
     [SerializeField] private Button[] modeButtons = new Button[4];
-    [SerializeField] private Color selectedColor = new Color(0.23f, 0.56f, 0.35f);
-    [SerializeField] private Color deselectedColor = new Color(0.85f, 0.85f, 0.85f);
+    // Farben wie Generic Button (Primärfarbe) und NavbarButton Variant (weiß)
+    [SerializeField] private Color selectedColor = new Color(0f, 0.35686275f, 0.49803922f);
+    [SerializeField] private Color deselectedColor = Color.white;
+    [SerializeField] private Color selectedTextColor = new Color(0.9607843f, 0.96862745f, 0.972549f);
+    [SerializeField] private Color deselectedTextColor = new Color(0.11372549f, 0.12941177f, 0.14509805f);
 
     private void Awake()
     {
@@ -81,10 +84,13 @@ public class EnergyWidget : MonoBehaviour
             cb.selectedColor = isActive ? selectedColor : deselectedColor;
             button.colors = cb;
 
-            // Auswahl nicht nur über Farbe zeigen (Farbenblindheit)
+            // Auswahl nicht nur über Farbe zeigen (Farbenblindheit): gefüllt statt weiß und fett
             TMP_Text label = button.GetComponentInChildren<TMP_Text>();
             if (label != null)
-                label.fontStyle = isActive ? FontStyles.Bold | FontStyles.Underline : FontStyles.Normal;
+            {
+                label.color = isActive ? selectedTextColor : deselectedTextColor;
+                label.fontStyle = isActive ? FontStyles.Bold : FontStyles.Normal;
+            }
         }
     }
 

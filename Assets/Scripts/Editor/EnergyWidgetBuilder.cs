@@ -20,8 +20,8 @@ public static class EnergyWidgetBuilder
     private const float BarHeight = 24f;
     // Sichtbar schmaler Button, die Touch-Fläche bleibt über Raycast Padding
     // bei mind. 48x48 dp (Android Accessibility Guidelines)
-    private const float ButtonHeight = 100f;
-    private const float TouchPadding = 22f;
+    private const float ButtonHeight = 72f;
+    private const float TouchPadding = 36f;
     private const float SettingsButtonSpace = 120f;
 
     private static readonly Color TextColor = new Color(0.11372549f, 0.12941177f, 0.14509805f);
@@ -114,8 +114,11 @@ public static class EnergyWidgetBuilder
         rowLayout.childControlHeight = true;
         rowLayout.childForceExpandWidth = true;
         rowLayout.childForceExpandHeight = true;
+        // Oben so viel Luft wie unten (TouchPadding), damit die Reihe vertikal mittig wirkt
+        rowLayout.padding = new RectOffset(0, 0, (int)(TouchPadding - Spacing), 0);
         LayoutElement rowElement = row.AddComponent<LayoutElement>();
-        rowElement.minHeight = ButtonHeight;
+        rowElement.minHeight = ButtonHeight + TouchPadding - Spacing;
+        rowElement.preferredHeight = ButtonHeight + TouchPadding - Spacing;
         rowElement.flexibleHeight = 0f;
 
         Button[] buttons = new Button[ModeLabels.Length];
@@ -123,6 +126,11 @@ public static class EnergyWidgetBuilder
         {
             GameObject buttonObject = NewUI(ModeLabels[i] + "Button", row.transform);
             Image buttonImage = buttonObject.AddComponent<Image>();
+            // Wie Generic Button: abgerundete Fläche, Farben setzt EnergyWidget je nach Auswahl
+            buttonImage.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Sprites/UIElements/RoundedButtonBackground.png");
+            buttonImage.type = Image.Type.Sliced;
+            // Sprite ist 192 px hoch und fast nur Ecke: so skalieren, dass die Rundung zur Button-Höhe passt
+            buttonImage.pixelsPerUnitMultiplier = 192f / ButtonHeight;
             buttonImage.color = Color.white;
             // Negatives Padding vergrößert die Tippfläche nach oben und unten über den sichtbaren Button hinaus
             buttonImage.raycastPadding = new Vector4(0f, -TouchPadding, 0f, -TouchPadding);

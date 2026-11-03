@@ -88,5 +88,5 @@ crashlytics-build.properties
 Assets/TextMesh Pro/Resources/Fonts & Materials/Lexend-VariableFont_wght SDF.asset
 
 # BackUpFolder
-/FlowBuddy_BackUpThisFolder_ButDontShipItWithYourGame/
-/FlowBuddy_BurstDebugInformation_DoNotShip/
+/*_BackUpThisFolder_ButDontShipItWithYourGame/
+/*_BurstDebugInformation_DoNotShip/

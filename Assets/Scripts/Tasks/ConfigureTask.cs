@@ -10,6 +10,7 @@ public class ConfigureTask : MonoBehaviour
     public TMP_InputField descriptionInput;
     public TMP_InputField dueDateInput;
     public Slider effortInput;
+    public Toggle importantToggle; // 80/20, optional: ohne Toggle bleibt alles wie bisher
 
     private Task task;
 
@@ -51,6 +52,7 @@ public class ConfigureTask : MonoBehaviour
             descriptionInput.text = "";
             dueDateInput.text = "";
             effortInput.value = DefaultEffort;
+            if (importantToggle != null) importantToggle.isOn = false;
             
         } else
         {
@@ -62,6 +64,7 @@ public class ConfigureTask : MonoBehaviour
             descriptionInput.text = existingTask.description;
             dueDateInput.text = existingTask.dueDateString;
             effortInput.value = existingTask.estimatedEffort;
+            if (importantToggle != null) importantToggle.isOn = existingTask.isImportant;
         }
         
     }
@@ -120,7 +123,7 @@ public class ConfigureTask : MonoBehaviour
             taskDataManager.CreateTask(task);
         else
         {
-            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString, task.estimatedEffort, task.isDone);
+            taskDataManager.UpdateTask(task.id, task.title, task.description, task.dueDateString, task.estimatedEffort, task.isDone, task.isImportant);
             EnergyBudget.RegisterEffortChange(task, oldEffort);
         }
 
@@ -141,5 +144,7 @@ public class ConfigureTask : MonoBehaviour
         task.description = descriptionInput.text;
         task.dueDateString = dueDateInput.text;
         task.estimatedEffort = (int)effortInput.value;
+        task.dueDateTicks = TaskPriority.ParseDueTicks(task.dueDateString);
+        if (importantToggle != null) task.isImportant = importantToggle.isOn;
     }
 }

@@ -86,14 +86,14 @@ public class SortAndFilterTasks : MonoBehaviour
         if (descending)
         {
             if (sortBy == SORTBY.Date)
-                return tasks.OrderByDescending(t => t.dueDateString);
+                return tasks.OrderByDescending(t => TaskPriority.DueTicks(t));
             else if (sortBy == SORTBY.Effort)
                 return tasks.OrderByDescending(t => t.estimatedEffort);
         }
         else
         {
             if (sortBy == SORTBY.Date)
-                return tasks.OrderBy(t => t.dueDateTicks);
+                return tasks.OrderBy(t => TaskPriority.DueTicks(t));
             else if (sortBy == SORTBY.Effort)
                 return tasks.OrderBy(t => t.estimatedEffort);
         }

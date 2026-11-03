@@ -12,4 +12,5 @@ public class Task
     public long dueDateTicks;   // sortieren nach Datum
     public bool isDone;
     public string completedDate; // yyyy-MM-dd, für den heutigen Energieverbrauch
+    public bool isImportant;     // 80/20: vom Nutzer als besonders wichtig markiert
 }

@@ -19,7 +19,8 @@ public class LearningPackageService : MonoBehaviour
 
         var prioritizedTasks = allTasks
             .Where(t => !t.isDone)
-            .OrderBy(t => t.dueDateTicks)
+            .OrderBy(t => TaskPriority.Tier(t))
+            .ThenBy(t => TaskPriority.DueTicks(t))
             .ThenBy(t => t.estimatedEffort)
             .ToList();
 

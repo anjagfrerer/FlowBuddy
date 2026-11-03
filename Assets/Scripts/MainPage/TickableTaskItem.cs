@@ -28,6 +28,8 @@ public class TickableTaskItem : MonoBehaviour
         currentTask = task;
         mainScreen = screen;
         titleText.text = task.title;
+        // Wichtige Aufgaben fett statt farbig markiert (Info nie allein über Farbe)
+        titleText.fontStyle = task.isImportant ? FontStyles.Bold : FontStyles.Normal;
 
         completeToggle.onValueChanged.RemoveAllListeners();
         

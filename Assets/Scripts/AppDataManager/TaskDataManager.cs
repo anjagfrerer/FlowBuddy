@@ -69,7 +69,7 @@ public class TaskDataManager : MonoBehaviour
         DataManager.Instance.SaveData();
     }**/
 
-    public void UpdateTask(string id, string title, string description, string dueDateString, int effort, bool done)
+    public void UpdateTask(string id, string title, string description, string dueDateString, int effort, bool done, bool important)
     {
         Task task = tasks.Find(t => t.id == id);
 
@@ -81,6 +81,7 @@ public class TaskDataManager : MonoBehaviour
 
         task.estimatedEffort = effort;
         task.isDone = done;
+        task.isImportant = important;
 
         // für die Sortierung
         task.dueDateTicks = DateTime.Parse(dueDateString,new CultureInfo("de-DE")).Ticks;

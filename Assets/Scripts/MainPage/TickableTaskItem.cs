@@ -66,11 +66,6 @@ public class TickableTaskItem : MonoBehaviour
                 EnergyBudget.RegisterCompletion(currentTask, isOn);
             }
 
-            if (isOn)
-            {
-                DataManager.Instance.appData.user.coins += 10;
-            }
-
             DataManager.Instance.SaveData(); 
         }
 

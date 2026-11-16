@@ -76,6 +76,7 @@ public class LearningPackageMainScreen : MonoBehaviour
         if (doneTasks.Count == 0) return;
 
         StatusBarManager.OnStatusValueAdd(doneTasks.Sum(t => t.estimatedEffort) * EnergyBudget.StatusPointsPerSpoon);
+        CoinReward.AwardPackage(doneTasks);
 
         foreach (Task doneTask in doneTasks)
         {
@@ -150,12 +151,13 @@ public class LearningPackageMainScreen : MonoBehaviour
         // Merken, welches Paket abgeschlossen wurde; RefreshUI kann currentDailyTasks inzwischen ersetzen
         List<Task> finishedPackage = currentDailyTasks;
         int finishedPackageValue = currentPackageValue;
+        int packageCoins = CoinReward.PackageTotal(finishedPackage);
 
         yield return new WaitForSeconds(0.4f);
 
         if (toastWindow != null)
         {
-            toastWindow.ShowToast("Congratulations! You completed the learning package!", 3.0f);
+            toastWindow.ShowToast($"Congratulations! You completed the learning package! +{packageCoins} coins", 3.0f);
         }
 
         yield return new WaitForSeconds(2.6f);
@@ -164,6 +166,7 @@ public class LearningPackageMainScreen : MonoBehaviour
 
         // Belohnung und Entfernen zusammen, damit ein abgebrochener Ablauf nichts doppelt vergibt
         StatusBarManager.OnStatusValueAdd(finishedPackageValue * EnergyBudget.StatusPointsPerSpoon);
+        CoinReward.AwardPackage(finishedPackage);
 
         foreach (var completedTask in finishedPackage)
         {

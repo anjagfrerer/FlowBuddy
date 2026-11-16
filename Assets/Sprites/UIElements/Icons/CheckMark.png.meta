@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3c77160cf010f2e8fb2d0ad13764a1f1
+guid: f7f7a896413895e9fa05a8580000bb98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5689985028076879244
-    second: search_icon_0
+      213: 5545118057803231360
+    second: CheckMark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: search_icon_0
+      name: CheckMark_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 61
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8d30d77c33e6fe40800000000000000
-      internalID: 5689985028076879244
+      spriteID: 08037f88e7734fc40800000000000000
+      internalID: 5545118057803231360
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      search_icon_0: 5689985028076879244
+      CheckMark_0: 5545118057803231360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

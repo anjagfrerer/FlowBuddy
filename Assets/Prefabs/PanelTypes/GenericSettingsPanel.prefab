@@ -124,14 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GenericSettingsPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 4665194445080408433, guid: 56cf0d92324885bd4a75b33398b2ed0f, type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4665194445080408433, guid: 56cf0d92324885bd4a75b33398b2ed0f, type: 3}
-      propertyPath: m_Padding.m_Right
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 4766412508064588143, guid: 56cf0d92324885bd4a75b33398b2ed0f, type: 3}
       propertyPath: m_ChildAlignment
       value: 3

@@ -8,7 +8,6 @@ public class SortAndFilterTasks : MonoBehaviour
 {
     [SerializeField] private TMP_InputField input;
     [SerializeField] private Toggle toggle_isDone;
-    [SerializeField] private Toggle toggle_descending;
     [SerializeField] private TMP_Dropdown sortByTable;
     private string prompt;
     private bool isDone = true;
@@ -30,10 +29,6 @@ public class SortAndFilterTasks : MonoBehaviour
             t => t.subjectId == DataManager.Instance.selectedSubjectId);
     }
 
-    public void SetDescending()
-    {
-        descending = toggle_descending.isOn;
-    }
     public void SetIsDone()
     {
         isDone = toggle_isDone.isOn;

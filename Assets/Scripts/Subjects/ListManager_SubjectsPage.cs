@@ -24,7 +24,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
     [SerializeField] Toggle selectAllToggle;
     bool selectAll = false;
 
-    private readonly List<ListItemSubjectEdit> items = new();
+    private readonly List<ListItemEdit> items = new();
 
     private void Start()
     {
@@ -55,7 +55,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
 
     private void AddListItem(string subjectName)
     {
-        ListItemSubjectEdit newItem = Instantiate(listItemPrefab, content).GetComponent<ListItemSubjectEdit>();
+        ListItemEdit newItem = Instantiate(listItemPrefab, content).GetComponent<ListItemEdit>();
 
         TMP_Text textComponent = newItem.tMP_Text;
         TMP_InputField editInput = newItem.tMP_InputField;
@@ -131,7 +131,7 @@ public class ListManager_SubjectsPage : MonoBehaviour
         });
     }
 
-    private void OnDeleteButtonClicked(ListItemSubjectEdit item, string subjectName)
+    private void OnDeleteButtonClicked(ListItemEdit item, string subjectName)
     {
 
         if (uIManager != null)

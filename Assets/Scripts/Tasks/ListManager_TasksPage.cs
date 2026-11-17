@@ -6,114 +6,106 @@ using UnityEngine.UI;
 
 public class ListManager_TasksPage : MonoBehaviour
 {
-    public TaskDataManager taskDataManager;
-    public GameObject configureTaskPanel;
+    UIManager uiManager;
+
+    [SerializeField]
+    private TaskDataManager taskDataManager;
+    [SerializeField]
+    private ConfigureTask configureTaskPanel;
 
     [Header("UI References")]
-    public Button addButton;
-    public Transform content;
-    public GameObject listItemPrefab;
+    [SerializeField]
+    Transform content;
+    [SerializeField]
+    GameObject listItemPrefab;
 
-    [Header("Icons for Edit/Save")]
-    public Sprite editIcon;
-    public Sprite saveIcon;
+    [SerializeField]
+    GameObject addListItemPrefab;
 
-    private List<GameObject> items = new List<GameObject>();
+    [Header("Select All")]
+    [SerializeField] Toggle selectAllToggle;
+    bool selectAll = false;
+
+    private readonly List<ListItemEdit> items = new();
 
     private void Start()
     {
-        // if (addButton != null)
-        //     addButton.onClick.AddListener(OnAddButtonClicked);
-
         RefreshList();
-    }
 
-    // private void OnAddButtonClicked()
-    // {
-    //     string taskName = inputField.text.Trim();
-    //     if (!IsNameValid(taskName))
-    //     {
-    //         return;
-    //     }
-        
-    //     // taskDataManager.CreateTask(taskName);
-    //     AddListItem(taskName);
-    //     inputField.text = "";
-    //     FindObjectOfType<UIManager>().ShowToast($"{taskName} added!");
-    // }
+        if(uiManager == null)
+        {
+            uiManager = FindAnyObjectByType<UIManager>();
+        }
+    }
 
     private void AddListItem(string taskId, string taskName)
     {
-        GameObject newItem = Instantiate(listItemPrefab, content);
+        ListItemEdit newItem = Instantiate(listItemPrefab, content).GetComponent<ListItemEdit>();
 
-        TMP_Text textComponent = newItem.transform.Find("Text").GetComponent<TMP_Text>();
-        Button editButton = newItem.transform.Find("EditButton").GetComponent<Button>();
-        Button deleteButton = newItem.transform.Find("DeleteButton").GetComponent<Button>();
+        TMP_Text textComponent = newItem.tMP_Text;
+        TMP_InputField editInput = newItem.tMP_InputField;
+        Button editButton = newItem.editButton;
+        Button deleteButton = newItem.deleteButton;
 
+        if(newItem.toggle)
+            newItem.toggle.isOn = false;
         textComponent.text = taskName;
+        editInput.gameObject.SetActive(false);
 
         deleteButton.onClick.AddListener(() => OnDeleteButtonClicked(newItem, textComponent.text, taskId));
-        //editButton.onClick.AddListener(() => OnEditButtonClicked(newItem, textComponent, editInput, editButton));
 
         editButton.onClick.AddListener(() =>
         {
             DataManager.Instance.selectedTaskName = taskName;
             Task selectedTask = DataManager.Instance.appData.tasks.Find(task => task.title == taskName);
 
-            configureTaskPanel.SetActive(true);
+            configureTaskPanel.gameObject.SetActive(true);
             configureTaskPanel.GetComponent<ConfigureTask>().Initialize(selectedTask);
             
-            //OnEditButtonClicked(selectedTask);
+            OnEditButtonClicked(selectedTask);
         });
 
         items.Add(newItem);
     }
 
-    private void OnEditButtonClicked(Task existingTask)
+    private void OnEditButtonClicked(Task selectedTask)
     {
-        
 
-
-
-        // if (!inputComp.gameObject.activeSelf)
-        // {
-        //     textComp.gameObject.SetActive(false);
-        //     inputComp.gameObject.SetActive(true);
-        //     inputComp.text = textComp.text;
-        //     btn.image.sprite = saveIcon;
-        //     inputComp.ActivateInputField();
-        // }
-        // else
-        // {
-        //     string oldName = textComp.text;
-        //     string newName = inputComp.text.Trim();
-
-        //     if (IsNameValid(newName, oldName))
-        //     {
-        //         if (newName != oldName)
-        //         {
-        //             DataManager.Instance.EditSubject(oldName, newName);
-
-        //             textComp.text = newName;
-
-        //             UIManager ui = Object.FindFirstObjectByType<UIManager>();
-        //             if (ui != null) ui.ShowToast($"Subject renamed to {newName}!");
-        //         }
-
-        //         textComp.gameObject.SetActive(true);
-        //         inputComp.gameObject.SetActive(false);
-        //         btn.image.sprite = editIcon;
-        //     }
-        // }
     }
 
-    private void OnDeleteButtonClicked(GameObject item, string taskName, string taskId)
+    public void SelectAll()
     {
-        UIManager ui = FindObjectOfType<UIManager>();
+        selectAll = !selectAll;
+        selectAllToggle.isOn = selectAll;
+        items.ForEach(item => item.toggle.isOn = selectAll);
+    }
 
-        if (ui != null)
+    public void DeleteAllChecked()
+    {
+        uiManager.RequestConfirmation(() =>
         {
-            ui.RequestConfirmation(() => {
+            var i = 0;
+            foreach (var item in items)
+            {
+                if (item.toggle.isOn)
+                {
+                    i++;
+                    DataManager.Instance.DeleteSubject(item.tMP_Text.text);
+                    Debug.Log(name + ": Subject " + item.name + " deleted!");
+                }
+
+            }
+            RefreshList();
+            uiManager.ShowToast($"{i} subjects deleted!");
+        });
+    }
+
+    private void OnDeleteButtonClicked(ListItemEdit item, string taskName, string taskId)
+    {
+
+        if (uiManager != null)
+        {
+            uiManager.RequestConfirmation(() => {
                 taskDataManager.DeleteTask(taskId);
                 items.Remove(item);
                 Destroy(item);
@@ -128,13 +120,21 @@ public class ListManager_TasksPage : MonoBehaviour
 
     public void RefreshList()
     {
-        foreach (GameObject item in items) Destroy(item);
+        for(int i = 0; i<content.childCount; i++) Destroy(content.GetChild(i));
         items.Clear();
 
-        string selectedSubjectName = DataManager.Instance.selectedSubjectName;
         string selectedSubjectId = DataManager.Instance.selectedSubjectId;
 
         Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.id == selectedSubjectId);
+
+        if (addListItemPrefab)
+        {
+            Debug.Log(name+":Adding AddListItemPrefab into '"+content+"'");
+            Button b = Instantiate(addListItemPrefab, content).GetComponentInChildren<Button>();
+            b.onClick.AddListener(() => {OnAddTask();});
+        }
+        else
+            Debug.LogError(name + ": No button for adding a list item configured.");
 
         // Show all tasks of a specific subject
         foreach (var task in DataManager.Instance.appData.tasks)
@@ -144,27 +144,11 @@ public class ListManager_TasksPage : MonoBehaviour
         }
     }
 
-    // private bool IsNameValid(string newName, string oldName = "")
-    // {
-    //     if (string.IsNullOrWhiteSpace(newName))
-    //     {
-    //         Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leerer Name");
-    //         FindObjectOfType<UIManager>().ShowToast($"Empty name!");
-    //         return false;
-    //     }
+    private void OnAddTask()
+    {
+        Debug.Log("Creating a new Task!");
+        GetComponentInParent<Panel>().SwitchToPanel("config");
+        configureTaskPanel.OpenForCreate();
+    }
 
-    //     if (newName != oldName)
-    //     {
-    //         bool exists = DataManager.Instance.appData.tasks.Exists(s => s.title.Equals(newName, System.StringComparison.OrdinalIgnoreCase));
-
-    //         if (exists)
-    //         {
-    //             Debug.LogWarning($"Aufgabe '{newName}' existiert bereits");
-    //             FindObjectOfType<UIManager>().ShowToast($"Name already exists");
-    //             return false;
-    //         }
-    //     }
-
-    //     return true;
-    // }
 }

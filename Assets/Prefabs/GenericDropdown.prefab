@@ -972,6 +972,7 @@ GameObject:
   - component: {fileID: 8510340450420999079}
   - component: {fileID: 7082167250152999284}
   - component: {fileID: 871527869678802253}
+  - component: {fileID: 8994371472779444442}
   m_Layer: 5
   m_Name: GenericDropdown
   m_TagString: Untagged
@@ -1139,6 +1140,26 @@ MonoBehaviour:
   m_EffectColor: {r: 0.85490197, g: 0.85490197, b: 0.85490197, a: 1}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &8994371472779444442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548857912406240642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &8813485968158806661
 GameObject:
   m_ObjectHideFlags: 0

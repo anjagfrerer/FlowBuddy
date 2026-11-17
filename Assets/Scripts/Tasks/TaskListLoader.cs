@@ -1,26 +1,14 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class TaskListLoader : MonoBehaviour
 {
-    public GameObject manageTasksPanel;
-    public GameObject configureTaskPanel;
-
     [Header("UI")]
     [SerializeField] private Transform content;
     [SerializeField] private GameObject taskPrefab;
 
     [Header("Navigation")]
     [SerializeField] private SortAndFilterTasks sortAndFilterTasks;
-
-    private void OnEnable()
-    {
-        manageTasksPanel.SetActive(false);
-        configureTaskPanel.SetActive(false);
-    }
 
     private void Start()
     {

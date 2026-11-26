@@ -6,7 +6,7 @@ public class ConfigureTask : MonoBehaviour
 {
     [SerializeField]
     private ListManager_TasksPage listManager_TasksPage;
-        [SerializeField]
+    [SerializeField]
     private TaskListLoader taskListLoader;
     [SerializeField]
     private TaskDataManager taskDataManager;
@@ -88,13 +88,6 @@ public class ConfigureTask : MonoBehaviour
         {
             Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leerer Titel");
             uIManager.ShowToast($"Empty title!");
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(description))
-        {
-            Debug.LogWarning("Aufgabe konnte nicht erstellt werden: Leere Beschreibung");
-            uIManager.ShowToast($"Empty description!");
             return false;
         }
 

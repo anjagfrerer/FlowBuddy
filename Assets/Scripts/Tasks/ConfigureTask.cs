@@ -17,7 +17,7 @@ public class ConfigureTask : MonoBehaviour
     [SerializeField]
     private TMP_InputField descriptionInput;
     [SerializeField]
-    private TMP_InputField dueDateInput;
+    private DueDateInput dueDateInput;
     [SerializeField]
     private Slider effortInput;
     [SerializeField]
@@ -61,7 +61,7 @@ public class ConfigureTask : MonoBehaviour
 
             titleInput.text = "";
             descriptionInput.text = "";
-            dueDateInput.text = "";
+            
             effortInput.value = DefaultEffort;
             if (importantToggle != null) importantToggle.isOn = false;
             
@@ -73,14 +73,14 @@ public class ConfigureTask : MonoBehaviour
             task = existingTask;
             titleInput.text = existingTask.title;
             descriptionInput.text = existingTask.description;
-            dueDateInput.text = existingTask.dueDateString;
+            dueDateInput.InitDate(existingTask.dueDateString);
             effortInput.value = existingTask.estimatedEffort;
             if (importantToggle != null) importantToggle.isOn = existingTask.isImportant;
         }
         
     }
 
-    private bool AreFieldsValid(string newTitle, string description, string dueDate, string oldTitle = "")
+    private bool AreFieldsValid(string newTitle, string dueDate, string oldTitle = "")
     {
         UIManager uIManager = FindAnyObjectByType<UIManager>();
 
@@ -90,6 +90,7 @@ public class ConfigureTask : MonoBehaviour
             uIManager.ShowToast($"Empty title!");
             return false;
         }
+
 
         if (string.IsNullOrWhiteSpace(dueDate))
         {
@@ -117,7 +118,7 @@ public class ConfigureTask : MonoBehaviour
     {
         UIManager uIManager = FindAnyObjectByType<UIManager>();
 
-        if(!AreFieldsValid(titleInput.text, descriptionInput.text, dueDateInput.text, isNew ? "" : task.title))
+        if(!AreFieldsValid(titleInput.text, dueDateInput.GetDate(), isNew ? "" : task.title))
             return;
 
         int oldEffort = task.estimatedEffort;
@@ -142,11 +143,11 @@ public class ConfigureTask : MonoBehaviour
         taskListLoader.RefreshList();
     }
 
-    public void setFields()
+    private void setFields()
     {
         task.title = titleInput.text;
         task.description = descriptionInput.text;
-        task.dueDateString = dueDateInput.text;
+        task.dueDateString = dueDateInput.GetDate();
         task.estimatedEffort = (int)effortInput.value;
         task.dueDateTicks = TaskPriority.ParseDueTicks(task.dueDateString);
         if (importantToggle != null) task.isImportant = importantToggle.isOn;

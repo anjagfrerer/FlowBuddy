@@ -1333,6 +1333,7 @@ GameObject:
   - component: {fileID: 283628396}
   - component: {fileID: 283628399}
   - component: {fileID: 283628400}
+  - component: {fileID: 283628401}
   m_Layer: 0
   m_Name: DueDate
   m_TagString: Untagged
@@ -1407,6 +1408,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &283628401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283628395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d8f4e5d6e58f0e2a090e7684fe7365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  dueDateLabel: {fileID: 2141032399}
 --- !u!224 &314810878 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 847961987759538754, guid: ba099d375083413c9b2d66d1bd7d5137, type: 3}
@@ -4034,7 +4048,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 496959621182958341, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_Name
-      value: Date Button (3)
+      value: minus week
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4057,6 +4071,58 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 283628401}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeDueDate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DueDateInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -4171,6 +4237,10 @@ PrefabInstance:
     - target: {fileID: 7316763835413958322, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613474641454432265, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_text
+      value: -7 Days
       objectReference: {fileID: 0}
     - target: {fileID: 7999709170122924750, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4598,7 +4668,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 50
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -4918,7 +4988,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 496959621182958341, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_Name
-      value: Date Button
+      value: plus Day
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4941,6 +5011,58 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 283628401}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeDueDate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DueDateInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -6039,7 +6161,7 @@ MonoBehaviour:
   configureTaskPanel: {fileID: 1155401905}
   titleInput: {fileID: 1809710042}
   descriptionInput: {fileID: 1588794800}
-  dueDateInput: {fileID: 0}
+  dueDateInput: {fileID: 283628401}
   effortInput: {fileID: 937770104}
   importantToggle: {fileID: 354511616}
 --- !u!114 &1155401905 stripped
@@ -6445,7 +6567,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 496959621182958341, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_Name
-      value: Date Button (2)
+      value: plus week
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6468,6 +6590,58 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 283628401}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeDueDate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DueDateInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -6582,6 +6756,12 @@ PrefabInstance:
     - target: {fileID: 7316763835413958322, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613474641454432265, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_text
+      value: '+7 Days
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 7999709170122924750, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8953,7 +9133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 496959621182958341, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_Name
-      value: Date Button (1)
+      value: minus Day
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8976,6 +9156,58 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1204425423317079670, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 283628401}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeDueDate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DueDateInput, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138948456181138575, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190982436305247033, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -9090,6 +9322,10 @@ PrefabInstance:
     - target: {fileID: 7316763835413958322, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613474641454432265, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
+      propertyPath: m_text
+      value: -1 Day
       objectReference: {fileID: 0}
     - target: {fileID: 7999709170122924750, guid: e12c0f3d4fdc462ae968046c864a75e4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -11253,7 +11489,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 50
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -11353,7 +11589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 11.11.1111
+  m_text: dd.MM.yyyy (x Days)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf3edda2107ef7545bcf9150d5078bc3, type: 2}
   m_sharedMaterial: {fileID: 3729666104262857353, guid: bf3edda2107ef7545bcf9150d5078bc3, type: 2}

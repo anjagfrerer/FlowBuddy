@@ -4,13 +4,24 @@ using UnityEngine.UI;
 
 public class ConfigureTask : MonoBehaviour
 {
-    public TaskDataManager taskDataManager;
-    public GameObject configureTaskPanel;
-    public TMP_InputField titleInput;
-    public TMP_InputField descriptionInput;
-    public TMP_InputField dueDateInput;
-    public Slider effortInput;
-    public Toggle importantToggle; // 80/20, optional: ohne Toggle bleibt alles wie bisher
+    [SerializeField]
+    private ListManager_TasksPage listManager_TasksPage;
+        [SerializeField]
+    private TaskListLoader taskListLoader;
+    [SerializeField]
+    private TaskDataManager taskDataManager;
+    [SerializeField]
+    private Panel configureTaskPanel;
+    [SerializeField]
+    private TMP_InputField titleInput;
+    [SerializeField]
+    private TMP_InputField descriptionInput;
+    [SerializeField]
+    private TMP_InputField dueDateInput;
+    [SerializeField]
+    private Slider effortInput;
+    [SerializeField]
+    private Toggle importantToggle; // 80/20, optional: ohne Toggle bleibt alles wie bisher
 
     private Task task;
 
@@ -127,15 +138,15 @@ public class ConfigureTask : MonoBehaviour
             EnergyBudget.RegisterEffortChange(task, oldEffort);
         }
 
-        configureTaskPanel.SetActive(false);
+        configureTaskPanel.SwitchToPanel("MT");
 
         if (isNew)
             uIManager.ShowToast($"{titleInput.text} added!");
         else
             uIManager.ShowToast($"{titleInput.text} updated!");
 
-        FindAnyObjectByType<ListManager_TasksPage>().RefreshList();
-        FindAnyObjectByType<TaskListLoader>().RefreshList();
+        listManager_TasksPage.RefreshList();
+        taskListLoader.RefreshList();
     }
 
     public void setFields()

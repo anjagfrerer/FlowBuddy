@@ -63,7 +63,7 @@ public class TaskListLoader : MonoBehaviour
     {
         GameObject buttonObj = Instantiate(taskPrefab, content);
 
-        TMP_Text text = buttonObj.transform.Find("Text").GetComponent<TMP_Text>();
+        TMP_Text text = buttonObj.transform.Find("Content").GetComponentInChildren<TMP_Text>();
         text.text = taskName;
     }
 

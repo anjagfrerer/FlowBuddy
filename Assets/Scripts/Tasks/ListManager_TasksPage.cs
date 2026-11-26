@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,10 +57,6 @@ public class ListManager_TasksPage : MonoBehaviour
         {
             DataManager.Instance.selectedTaskName = taskName;
             Task selectedTask = DataManager.Instance.appData.tasks.Find(task => task.title == taskName);
-
-            configureTaskPanel.gameObject.SetActive(true);
-            configureTaskPanel.GetComponent<ConfigureTask>().Initialize(selectedTask);
-            
             OnEditButtonClicked(selectedTask);
         });
 
@@ -70,7 +65,9 @@ public class ListManager_TasksPage : MonoBehaviour
 
     private void OnEditButtonClicked(Task selectedTask)
     {
-
+        Debug.Log(name + ":Editing Task '"+selectedTask.title + "'");
+        GetComponentInParent<Panel>().SwitchToPanel("config");
+        configureTaskPanel.Initialize(selectedTask);
     }
 
     public void SelectAll()
@@ -120,21 +117,12 @@ public class ListManager_TasksPage : MonoBehaviour
 
     public void RefreshList()
     {
-        for(int i = 0; i<content.childCount; i++) Destroy(content.GetChild(i));
+        foreach(var item in items) Destroy(item.gameObject);
         items.Clear();
 
         string selectedSubjectId = DataManager.Instance.selectedSubjectId;
 
         Subject selectedSubject = DataManager.Instance.appData.subjects.Find(subject => subject.id == selectedSubjectId);
-
-        if (addListItemPrefab)
-        {
-            Debug.Log(name+":Adding AddListItemPrefab into '"+content+"'");
-            Button b = Instantiate(addListItemPrefab, content).GetComponentInChildren<Button>();
-            b.onClick.AddListener(() => {OnAddTask();});
-        }
-        else
-            Debug.LogError(name + ": No button for adding a list item configured.");
 
         // Show all tasks of a specific subject
         foreach (var task in DataManager.Instance.appData.tasks)
@@ -144,7 +132,7 @@ public class ListManager_TasksPage : MonoBehaviour
         }
     }
 
-    private void OnAddTask()
+    public void OnAddTask()
     {
         Debug.Log("Creating a new Task!");
         GetComponentInParent<Panel>().SwitchToPanel("config");
